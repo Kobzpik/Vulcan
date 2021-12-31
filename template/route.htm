@@ -1,3 +1,31 @@
 {% extends 'base.htm' %} {% block content %}
-<h5>test,route</h5>
+<h5>testting......</h5>
+
+<center>
+    <div class="col">
+        {% for things in test_data %}
+        <table class="table">
+            <thead class="thead-dark">
+
+                {% if things.Id == 1 %}
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Age</th>
+                </tr>
+                {% endif %}
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{things.Id}}</th>
+                    <td>{{things.firstName}}</td>
+                    <td>{{things.age}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        {% endfor %}
+    </div>
+</center>
+
 {% endblock content %}
