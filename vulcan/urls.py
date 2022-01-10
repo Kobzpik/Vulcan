@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
-    path('',include('TVDM.urls')),
+    #path('TVDM',include('TVDM.urls')),
+    path('',include('authenticate.urls')),
     path('admin/', admin.site.urls),
 ]
