@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #own
     #'TVDM'
+    'crispy_forms',
     'authenticate',
     
 ]
@@ -84,7 +85,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '34195033Pp',
         'HOST': 'localhost',
-        'PORT': '3306',
+        'PORT': '',
     }
 }
 
