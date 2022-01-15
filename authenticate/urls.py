@@ -1,15 +1,15 @@
 from django.urls import path
 from .import views
-from django.contrib.auth import views as auth_view
-
-
 
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('authenticate/', views.authenticate, name='authenticate'),
-    path('profile/', views.profile, name='profile'),
-    path('login/', auth_view.LoginView.as_view(template_name='authenticate/login.htm'), name="login"),
-    path('logout/', auth_view.LogoutView.as_view(template_name='authenticate/logout.htm'), name="logout"),
+     path('profile/',views.profile, name='profile'),
+     path('driver_register/',views.driver_register.as_view(), name='driver_register'),
+     path('officer_register/',views.officer_register.as_view(), name='officer_register'),
+     path('profile/', views.profile, name='profile'),
+     path('login_driver/',views.login_requestDriver, name='login_driver'),
+     path('login_police/',views.login_requestPolice, name='login_police'),
+     path('logout/',views.logout_view, name='logout'),
     
 ]

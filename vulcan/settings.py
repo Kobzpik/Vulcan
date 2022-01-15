@@ -39,10 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #own
     #'TVDM'
+    'widget_tweaks',
     'crispy_forms',
     'authenticate',
     
 ]
+
+AUTH_USER_MODEL = 'authenticate.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,9 +84,9 @@ WSGI_APPLICATION = 'vulcan.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'beta',
+        'NAME': 'alpha',
         'USER': 'root',
-        'PASSWORD': '34195033Pp',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
     }
