@@ -1,0 +1,15 @@
+from django.urls import path
+from .import views
+
+
+urlpatterns = [
+    path('', views.home, name='home'),
+     path('profile/',views.profile, name='profile'),
+     path('driver_register/',views.driver_register.as_view(), name='driver_register'),
+     path('officer_register/',views.officer_register.as_view(), name='officer_register'),
+     path('profile/', views.profile, name='profile'),
+     path('login_driver/',views.login_requestDriver, name='login_driver'),
+     path('login_police/',views.login_requestPolice, name='login_police'),
+     path('logout/',views.logout_view, name='logout'),
+    
+]

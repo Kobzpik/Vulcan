@@ -1,0 +1,218 @@
+    #bg {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    
+    #base-navbar {
+        min-height: 120px;
+        font-size: 15px;
+    }
+    
+    #main-navbar {
+        min-height: 80px;
+        font-size: 15px;
+    }
+    
+    #main_header {
+        text-align: center;
+        font-size: 30px;
+        padding-left: 120px;
+    }
+    
+    #header-paragraph {
+        font-size: 20px;
+        padding-top: 30px;
+        font-weight: lighter;
+    }
+    
+    .navbar-nav {
+        font-size: 17px;
+        color: aliceblue;
+    }
+    
+    .navbar-nav .nav-link:hover {
+        font-size: 18px;
+        background-color: #2611e4;
+        transition: 0.8s;
+    }
+    /* Slide-show*/
+    
+    .carousel-item {
+        border: 2xp;
+        height: 550px;
+        background-position: center;
+        position: relative;
+        background-size: cover;
+    }
+    
+    .carousel-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-height: 50px;
+    }
+    
+    #carouselExampleIndicators {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 30px;
+        /*padding-bottom: 20px;*/
+    }
+    
+    #slide_img {
+        height: 500px;
+    }
+    
+    @media only screen and (max-width:715px) {
+        #slide_img {
+            height: 250px;
+        }
+    }
+    
+    @media (max-width:325px) {
+        #slide_img {
+            height: 100px;
+        }
+    }
+    /*
+#header-links {
+    position: relative;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 13px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+#header-links:hover {
+    color: #021f3b;
+    font-size: 15px;
+    border-radius: 6px;
+    background-color: #ffcab1;
+    box-shadow: 0 0 10px #48ff66, 0 0 4px #48ff66, 0 0 80px #6dff48;
+    transition-delay: 0.1s;
+    text-decoration: none;
+    border-radius: 9px;
+}
+
+#header-links:active {
+    font-size: 10px;
+}
+*/
+    
+    #body-link-row {
+        position: relative;
+        border-radius: 6px;
+        padding: 15px 30px;
+        text-transform: uppercase;
+        font-size: 15px;
+    }
+    
+    #body-link-row:hover {
+        color: #021f3b;
+        font-size: 15px;
+        border-radius: 6px;
+        background-color: #6f8070;
+        box-shadow: 0 0 10px #3914dd, 0 0 4px #1a01ff, 0 0 80px #1b04eb;
+        transition-delay: 0.1s;
+        text-decoration: none;
+        border-radius: 9px;
+    }
+    /*~~~~~~~~~~~~~~~~~~~~~~~~add~~~~~~~~~~~~~~~~~~~~~~*/
+    /* News and event */
+    
+    .feed {
+        background-image: url(../images/feed_image.jpeg);
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+    }
+    
+    #feed_header {
+        text-align: center;
+        font-size: 30px;
+    }
+    
+    #news_card {
+        padding: 15px;
+        margin: 15px;
+        background-color: rgb(216, 224, 224);
+        box-shadow: 5px 5px 5px 2px #242222;
+    }
+    
+    #link_card {
+        padding: 5px;
+        margin: 15px;
+        background-color: rgb(87, 119, 119);
+    }
+    /* import link */
+    
+    #link_logo {
+        font-size: 80px;
+        align-items: center;
+    }
+    
+    #link_h1 {
+        text-align: right;
+    }
+    
+    #link_h {
+        color: aliceblue;
+    }
+    /* Footer */
+    
+    #footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(0, 0, 0);
+        padding-top: 10px;
+        color: aliceblue;
+    }
+    /*Footer social-media*/
+    
+    footer .col-4 .social-media ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        justify-content: left;
+    }
+    
+    footer .col-4 .social-media ul li {
+        margin: 0 .5rem;
+        display: inline-block;
+    }
+    
+    footer .col-4 .social-media ul li a {
+        color: #FFF;
+        border: 1px solid;
+        width: 50px;
+        height: 50px;
+        position: relative;
+        border-radius: 50%;
+        display: block;
+        font-size: 1.5rem;
+        transition: .3s;
+    }
+    
+    footer .col-4 .social-media ul li a:hover {
+        color: rgb(40, 29, 197);
+    }
+    
+    footer .col-4 .social-media ul li a i {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .carousel-item {
+        height: 150px;
+    }

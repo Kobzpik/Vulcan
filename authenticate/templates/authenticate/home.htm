@@ -1,0 +1,250 @@
+{% extends 'authenticate/base.htm' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<div class="container-fluid">
+    <!--sldie show-->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" id="slide_img">
+            <div class="carousel-item active">
+                <img src="{% static 'authenticate/images/slide_show1.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'authenticate/images/slide_show2.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'authenticate/images/slide_show1.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <br>
+
+    <!--select deriver / officer-->
+    <div class="row g-0">
+        <center>
+            <div class="col-sm-6 col-md-8" id="header-text">
+                <div class="row">
+                    <div class="col-6">
+                        <h4>Are you,</h4>
+                        <a class="btn" href="{% url 'login_driver' %}" style="color: rgb(248, 246, 246); background-color: #4a5852;" type="submit" id="body-link-row">Driver</a><br><br>
+                    </div>
+                    <div class="col-6">
+                        <h4>Are you,</h4>
+                        <a class="btn" href="{% url 'login_police' %}" style="color: rgb(250, 244, 244); background-color: #4a5852;" type="submit" id="body-link-row">Police officer</a>
+                    </div>
+                </div>
+
+            </div>
+        </center>
+    </div>
+
+    <!--News and event-->
+    <div class="feed">
+        <div class="row">
+            <h5 id="feed_header">News and Event</h5>
+            <div class="col-lg-3 col-m-6 col-6">
+                <div id="news_card" class="card">
+                    <img src="{% static 'authenticate/images/slide_show1.jpg' %}" class="d-block w-100" alt="...">
+                    <h5>OICs of 105 new Police Stations will be addressed by the Minister in charge of the subject.</h5>
+                    <p>Rear Admiral (Retd.) Minister of Public Defense (Retd.) Dr. Sarath Weerasekara This was done by the President on January 10, 2022 at the Police Crime Records Division Auditorium in accordance with the Health Guidelines.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-m-6 col-6">
+                <div id="news_card" class="card">
+                    <img src="{% static 'authenticate/images/slide_show1.jpg' %}" class="d-block w-100" alt="...">
+                    <h5>OICs of 105 new Police Stations will be addressed by the Minister in charge of the subject.</h5>
+                    <p>Rear Admiral (Retd.) Minister of Public Defense (Retd.) Dr. Sarath Weerasekara This was done by the President on January 10, 2022 at the Police Crime Records Division Auditorium in accordance with the Health Guidelines.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-m-6 col-6">
+                <div id="news_card" class="card">
+                    <img src="{% static 'authenticate/images/slide_show1.jpg' %}" class="d-block w-100" alt="...">
+                    <h5>OICs of 105 new Police Stations will be addressed by the Minister in charge of the subject.</h5>
+                    <p>Rear Admiral (Retd.) Minister of Public Defense (Retd.) Dr. Sarath Weerasekara This was done by the President on January 10, 2022 at the Police Crime Records Division Auditorium in accordance with the Health Guidelines.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-m-6 col-6">
+                <div id="news_card" class="card">
+                    <img src="{% static 'authenticate/images/slide_show1.jpg' %}" class="d-block w-100" alt="...">
+                    <h5>OICs of 105 new Police Stations will be addressed by the Minister in charge of the subject.</h5>
+                    <p>Rear Admiral (Retd.) Minister of Public Defense (Retd.) Dr. Sarath Weerasekara This was done by the President on January 10, 2022 at the Police Crime Records Division Auditorium in accordance with the Health Guidelines.</p>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <!--Importaint Link-->
+    <div class="link">
+        <section class="pt-5 pb-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6">
+                        <h3 id="link_h1">Imporatant Link</h3>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a class="btn btn-secondary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
+                        <a class="btn btn-secondary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-12">
+                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                        <div class="col-4 ">
+                                            <div id="link_card" class="card">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <i id="link_logo" class="fa fa-first-order"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <br>
+                                                        <h5 id="link_h">Ministry of Transport & Civil Aviaion</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div id="link_card" class="card">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <i id="link_logo" class="fa fa-first-order"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <br>
+                                                        <h5 id="link_h">Ministry of Transport & Civil Aviaion</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div id="link_card" class="card">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <i id="link_logo" class="fa fa-first-order"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <br>
+                                                        <h5 id="link_h">Ministry of Transport & Civil Aviaion</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+
+                                        <div class="col-md-4 mb-3">
+                                            <div id="link_card" class="card">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <i id="link_logo" class="fa fa-first-order"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <br>
+                                                        <h5 id="link_h">Ministry of Transport & Civil Aviaion</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div id="link_card" class="card">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <i id="link_logo" class="fa fa-first-order"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <br>
+                                                        <h5 id="link_h">Ministry of Transport & Civil Aviaion</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div id="link_card" class="card">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <i id="link_logo" class="fa fa-first-order"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <br>
+                                                        <h5 id="link_h">Ministry of Transport & Civil Aviaion</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+
+                                        <div class="col-md-4 mb-3">
+                                            <div id="link_card" class="card">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <i id="link_logo" class="fa fa-first-order"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <br>
+                                                        <h5 id="link_h">Ministry of Transport & Civil Aviaion</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div id="link_card" class="card">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <i id="link_logo" class="fa fa-first-order"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <br>
+                                                        <h5 id="link_h">Ministry of Transport & Civil Aviaion</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div id="link_card" class="card">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <i id="link_logo" class="fa fa-first-order"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <br>
+                                                        <h5 id="link_h">Ministry of Transport & Civil Aviaion</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock content %}
