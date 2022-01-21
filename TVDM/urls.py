@@ -3,7 +3,7 @@ from .import views
 from .views import userform
 
 urlpatterns = [
-    path('',views.home,name="home"),
+    path('',views.index,name="index"),
     path('route/',userform,name="route"),
     
 

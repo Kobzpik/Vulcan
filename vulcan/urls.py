@@ -18,6 +18,8 @@ from django.urls import path,include
 
 urlpatterns = [
     #path('TVDM',include('TVDM.urls')),
-    path('',include('authenticate.urls')),
+    path('authenticate/',include('authenticate.urls')),
+    path('officer/',include('officer.urls')),
+    path('',include('TVDM.urls')),
     path('admin/', admin.site.urls),
 ]

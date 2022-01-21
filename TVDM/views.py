@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .models import list
 
 # Create your views here.
-def home(request):
-        return render(request, 'index.htm')
+def index(request):
+        return render(request, 'TVDM/index.htm')
        
 def userform(request):
         data=list.objects.all()

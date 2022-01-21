@@ -31,6 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #own
+    'authenticate.apps.AuthenticateConfig',
+    'TVDM.apps.TvdmConfig',
+    'officer.apps.OfficerConfig',
+    #
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,10 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #own
-    #'TVDM'
     'widget_tweaks',
     'crispy_forms',
-    'authenticate',
+    
     
 ]
 

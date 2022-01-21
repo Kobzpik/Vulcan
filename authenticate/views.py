@@ -3,7 +3,8 @@ from django.contrib.auth import login, logout,authenticate
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.views.generic import CreateView
-from .form import CustomerSignUpForm, EmployeeSignUpForm
+#from sqlalchemy import true
+from .form import OfficerSignUpForm, DriverSignUpForm
 from django.contrib.auth.forms import AuthenticationForm
 from .models import User
 from django.contrib.auth.decorators import login_required
@@ -16,7 +17,7 @@ def profile(request):
 
 class driver_register(CreateView):
     model = User
-    form_class = CustomerSignUpForm
+    form_class = DriverSignUpForm
     template_name = 'authenticate/driver_register.htm'
 
     def form_valid(self, form):
@@ -26,7 +27,7 @@ class driver_register(CreateView):
 
 class officer_register(CreateView):
     model = User
-    form_class = EmployeeSignUpForm
+    form_class = OfficerSignUpForm
     template_name = 'authenticate/officer_register.htm'
 
     def form_valid(self, form):
@@ -59,7 +60,7 @@ def login_requestDriver(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            if user is not None :
+            if user is not None and user.is_driver== True :
                 login(request,user)
                 return redirect('profile')
             else:
@@ -76,7 +77,7 @@ def login_requestPolice(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            if user is not None :
+            if user is not None and user.is_officer== True :
                 login(request,user)
                 return redirect('profile')
             else:
