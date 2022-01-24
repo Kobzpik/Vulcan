@@ -34,6 +34,25 @@
     padding: 10px;
 }
 
+.col-4 {
+    padding: 10px;
+    margin: 10px;
+    width: auto;
+}
+
+#offence {
+    border: 1px solid #e0e0e0;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#nameoffence {
+    border: 1px solid #e0e0e0;
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
 .wrapper textarea {
     resize: none;
     height: 80px;
