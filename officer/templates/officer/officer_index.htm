@@ -1,5 +1,5 @@
 {% extends 'authenticate/base.htm' %}{% load widget_tweaks %} {% load static %} {% block content %}
-<link rel="stylesheet" href="{% static 'css/main.css' %}"> {% load widget_tweaks %} {% load static %}
+<link rel="stylesheet" href="{% static 'officer/css/style.css' %}"> {% load widget_tweaks %} {% load static %}
 
 <br>
 <br>
@@ -10,14 +10,16 @@
             <div class="col-md-6 mx-auto">
                 <div class="card">
                     <div class="card-header text-black">
-                        <h2>DIGITAL FINE PAPER</h2>
+                        <h2 id="fine_h">DIGITAL FINE PAPER</h2>
                     </div>
                     <div class="card-body">
-                        <form method="post" id="personForm" data-cities-url="{% url 'ajax_load_locations' %}" novalidate>
-                            {% csrf_token %}
+                        <form method="post" id="personForm" data-locations-url="{% url 'ajax_load_locations' %}" novalidate>
+                            {% csrf_token %} {% for field in form.visible_fields %}
                             <div class="form-group">
-                                {{ form.as_p }} {% render_field field class="form-control" %}
-                                <input type="submit" value="MAKE FINE" class="btn btn-block btn-primary">
+                                {{ field.label_tag }} {% render_field field class="form-control" %}{% for error in field.errors %}
+                                <span style="color:red">{{ error }}</span> {% endfor %} {% endfor %}
+                                <br>
+                                <input id="fine_btn" type="submit" value="MAKE FINE" class="btn btn-block btn-primary">
                             </div>
                         </form>
                     </div>
@@ -30,7 +32,7 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!--script src="https://code.jquery.com/jquery-3.3.1.min.js"></script-->
 <script>
     $("#id_district").change(function() {
         const url = $("#personForm").attr("data-locations-url"); // get the url of the `load_locations` view

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect, get_object_or_404
+from django.contrib import messages
 from .forms import FineCreationForm
 from .models import Fine, Location
 
@@ -11,6 +12,9 @@ def fine_create_view(request):
         if form.is_valid():
             form.save()
             return redirect('fine_add')
+        else:
+            messages.error(request,"Invalid Data Enter")
+   
     return render(request, 'officer/officer_index.htm', {'form': form})
 
 
@@ -22,6 +26,9 @@ def fine_update_view(request, pk):
         if form.is_valid():
             form.save()
             return redirect('fine_change', pk=pk)
+        else:
+            messages.error(request,"Invalid username or password")
+    
     return render(request, 'officer/officer_index.htm', {'form': form})
 
 

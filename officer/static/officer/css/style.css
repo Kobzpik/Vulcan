@@ -1,12 +1,12 @@
-.wrapper {
-    /*position: absolute;
+  /*.wrapper {
+  position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 350px;
     width: 100%;
     background: #fff;
-   */
+ 
     top: 50%;
     left: 50%;
     border-radius: 5px;
@@ -73,9 +73,32 @@
 
 #error_message {
     margin-bottom: 20px;
-    background: #fe8b8e;
+    background: #d80d14;
     padding: 0px;
     text-align: center;
     font-size: 14px;
     transition: all 0.5s ease;
 }
+  */
+  
+  #fine_h {
+      text-align: center;
+      color: #080808;
+      letter-spacing: 3px;
+  }
+  
+  #fine_btn {
+      color: rgb(29, 25, 25);
+      background-color: rgb(236, 103, 103);
+      font-weight: 500;
+      border-radius: 6px;
+  }
+  
+  #fine_btn:hover {
+      font-weight: 500;
+      font-size: 18px;
+      border-radius: 6px;
+      transition-delay: 0.1s;
+      text-decoration: none;
+      border-radius: 9px;
+  }
