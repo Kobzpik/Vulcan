@@ -1,9 +1,8 @@
-{% extends 'authenticate/base_sub.htm' %}{% load widget_tweaks %} {% load static %} {% block content %}
-<link rel="stylesheet" href="{% static 'css/main.css' %}">> {% load widget_tweaks %} {% load static %}
+{% extends 'authenticate/base.htm' %}{% load widget_tweaks %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}"> {% load widget_tweaks %} {% load static %}
 
-<h2>{{ fine.driver_Name }}</h2>
-
-
+<br>
+<br>
 
 <section>
     <div class="container">
@@ -18,7 +17,7 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 {{ form.as_p }} {% render_field field class="form-control" %}
-                                <input type="submit" value="Register" class="btn btn-block btn-primary">
+                                <input type="submit" value="MAKE FINE" class="btn btn-block btn-primary">
                             </div>
                         </form>
                     </div>
@@ -28,7 +27,7 @@
     </div>
     </div>
 </section>
-<h2>{{ district.name }}</h2>
+
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
