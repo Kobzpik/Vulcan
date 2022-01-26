@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'authenticate.apps.AuthenticateConfig',
     'TVDM.apps.TvdmConfig',
     'officer.apps.OfficerConfig',
+    'driver.apps.DriverConfig',
     #
     'django.contrib.admin',
     'django.contrib.auth',
