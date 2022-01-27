@@ -26,7 +26,7 @@ class driver_register(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('/')
+        return redirect('login_driver')
 
 class officer_register(CreateView):
     model = User
@@ -36,7 +36,7 @@ class officer_register(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('/')
+        return redirect('login_police')
 
 
 #def login_request(request):

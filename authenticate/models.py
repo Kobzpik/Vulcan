@@ -12,7 +12,7 @@ class User(AbstractUser):
 class Driver(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True)
     phone_number = models.CharField(max_length=20)
-    location = models.CharField(max_length=20)
+    driver_license_No = models.CharField(max_length=20)
 
 class Officer(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True)

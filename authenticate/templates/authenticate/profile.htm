@@ -36,11 +36,12 @@
             <div id="link_card" class="card">
                 <div class="row">
                     <div class="col-3">
-                        <i id="link_logo" class="fa fa-first-order"></i>
+                        <a id="card-a" href="{% url 'officer_register' %}"><i id="link_logo" class="fa fa-first-order"></i></a>
                     </div>
                     <div class="col-9">
                         <br>
-                        <h5 id="link_h">Administrator view</h5>
+                        <a id="card-a" href="{% url 'officer_register' %}">
+                            <h5 id="link_h">Registration of a new officer</h5>
                     </div>
                 </div>
             </div>
