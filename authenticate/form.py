@@ -1,9 +1,9 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.db import transaction
-from .models import User,Customer,Employee
+from .models import User,Driver,Officer
 
-class CustomerSignUpForm(UserCreationForm):
+class DriverSignUpForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     phone_number = forms.CharField(required=True)
@@ -15,17 +15,17 @@ class CustomerSignUpForm(UserCreationForm):
     @transaction.atomic
     def save(self):
         user = super().save(commit=False)
-        user.is_customer = True
+        user.is_driver = True
         user.first_name = self.cleaned_data.get('first_name')
         user.last_name = self.cleaned_data.get('last_name')
         user.save()
-        customer = Customer.objects.create(user=user)
-        customer.phone_number=self.cleaned_data.get('phone_number')
-        customer.location=self.cleaned_data.get('location')
-        customer.save()
+        driver = Driver.objects.create(user=user)
+        driver.phone_number=self.cleaned_data.get('phone_number')
+        driver.location=self.cleaned_data.get('location')
+        driver.save()
         return user
 
-class EmployeeSignUpForm(UserCreationForm):
+class OfficerSignUpForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     phone_number = forms.CharField(required=True)
@@ -37,13 +37,13 @@ class EmployeeSignUpForm(UserCreationForm):
     @transaction.atomic
     def save(self):
         user = super().save(commit=False)
-        user.is_employee = True
+        user.is_officer = True
         user.is_staff = True
         user.first_name = self.cleaned_data.get('first_name')
         user.last_name = self.cleaned_data.get('last_name')
         user.save()
-        employee = Employee.objects.create(user=user)
-        employee.phone_number=self.cleaned_data.get('phone_number')
-        employee.designation=self.cleaned_data.get('designation')
-        employee.save()
+        officer = Officer.objects.create(user=user)
+        officer.phone_number=self.cleaned_data.get('phone_number')
+        officer.designation=self.cleaned_data.get('designation')
+        officer.save()
         return user

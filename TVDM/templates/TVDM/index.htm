@@ -1,0 +1,12 @@
+{% extends 'TVDM/base.htm' %} {% block content %}
+<h5>Hello , this is a fine managmnet system wich is called TVDM</h5>
+<center>
+    <a href="{% url 'home' %}"><button type="button" class="btn btn-success">login</button></a>
+    <h5>hello</h5>
+    <h2>{{ user.username }}</h2>
+</center>
+
+
+
+
+{% endblock content %}
