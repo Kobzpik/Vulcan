@@ -1,7 +1,7 @@
 from sqlite3 import Date
 from xml.parsers.expat import model
 from django.db import models
-from authenticate.models import Officer
+from authenticate.models import Driver
 
 # Create your models here.
 class District(models.Model):
@@ -23,10 +23,16 @@ class Offence(models.Model):
 
     def __str__(self):
         return self.offence
+    
+class DriverName(models.Model):
+    user = models.ForeignKey(Driver, on_delete=models.CASCADE, primary_key = True) 
+    
+    def __int__(self):
+        return self.user      
 
 class Fine(models.Model):
     id=models.AutoField(primary_key=True)
-    driver_Name = models.CharField(max_length=50)
+    driver_Name = models.ForeignKey(DriverName, on_delete=models.SET_NULL, blank=True, null=True)
     vehicle_No = models.CharField(max_length=50)
     driver_license_No = models.CharField(max_length=124)
     district = models.ForeignKey(District, on_delete=models.SET_NULL, blank=True, null=True)

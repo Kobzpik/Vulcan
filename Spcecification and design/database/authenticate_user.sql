@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2022 at 01:26 PM
+-- Generation Time: Jan 29, 2022 at 03:54 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.14
 
@@ -48,7 +48,9 @@ CREATE TABLE `authenticate_user` (
 --
 
 INSERT INTO `authenticate_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `email`, `is_staff`, `is_active`, `date_joined`, `is_driver`, `is_officer`, `first_name`, `last_name`) VALUES
-(1, 'pbkdf2_sha256$216000$fc4OszteP9CC$XOFWoxivw12S/vvEHQaMJ3I56Y4EefpByI62qMe9qtw=', '2022-01-26 11:56:45.569010', 0, 'kobz', '', 1, 1, '2022-01-26 07:02:48.870441', 1, 1, 'prabath', 'indrajith');
+(1, 'pbkdf2_sha256$216000$unrClJfvLBfo$aG3kRvW9CNkPVoQZvhkIsOgibdkbRjdr7Xtpz6NmnQk=', '2022-01-29 14:30:36.774187', 0, 'driver1', '', 0, 1, '2022-01-29 13:30:37.931704', 1, 0, 'driv', 'ver1'),
+(2, 'pbkdf2_sha256$216000$fc4OszteP9CC$XOFWoxivw12S/vvEHQaMJ3I56Y4EefpByI62qMe9qtw=', '2022-01-29 14:27:35.427999', 0, 'kobz', '', 1, 1, '2022-01-26 07:02:48.870441', 1, 1, 'prabath', 'indrajith'),
+(3, 'pbkdf2_sha256$216000$X5Jo3Lpvy3Kd$k5JHsHg6O87jhzcgMBmG71vyJgkBEf0stLJlEn/yfdY=', '2022-01-29 14:33:39.145833', 0, 'driver2', '', 0, 1, '2022-01-29 14:29:20.795087', 1, 0, 'dri', 'ver2');
 
 --
 -- Indexes for dumped tables
@@ -69,7 +71,7 @@ ALTER TABLE `authenticate_user`
 -- AUTO_INCREMENT for table `authenticate_user`
 --
 ALTER TABLE `authenticate_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

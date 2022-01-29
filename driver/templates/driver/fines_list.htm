@@ -1,38 +1,37 @@
-{% extends 'authenticate/base.htm' %} {% load crispy_forms_tags %} {% block content %}
+ {% extends 'authenticate/base.htm' %} {% load crispy_forms_tags %} {% block content %}
+<br>
 <div class="container-fluid">
-    <br>
-    <h4>hello,{{user.username}}</h4>
-    <br>
 
-    <!--fine list table-->
-    <table class="table table-light table-striped table-bordered ">
-        <thead>
-            <tr>
-                <th scope="col">Fine id</th>
-                <th scope="col">Date</th>
-                <th scope="col">Time</th>
-                <th scope="col">Police station</th>
-                <th scope="col">Nature of offence</th>
-                <th scope="col">District</th>
-                <th scope="col">Location</th>
-                <th scope="col">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for st in fined %}
-            <tr>
-                <th scope="row">{{st.id}}</th>
-                <td>{{st.date}}</td>
-                <td>{{st.time}}</td>
-                <td>{{st.Police_station}}</td>
-                <td>{{st.Nature_of_Offence}}</td>
-                <td>{{st.district}}</td>
-                <td>{{st.location}}</td>
-                <td>Pending</td>
-            </tr>{% endfor %}
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="card card-body">
+            <table class="table table-light table-striped table-bordered ">
+                <thead>
+                    <tr>
+                        <th scope="col">Fine id</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Police station</th>
+                        <th scope="col">Nature of offence</th>
+                        <th scope="col">District</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">{{fined.id}}</th>
+                        <td>{{fined.date}}</td>
+                        <td>{{fined.time}}</td>
+                        <td>{{fined.Police_station}}</td>
+                        <td>{{fined.Nature_of_Offence}}</td>
+                        <td>{{fined.district}}</td>
+                        <td>{{fined.location}}</td>
+                        <td>Pending</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <br>
-</div>
-{% endblock %}
+
+
+    {% endblock %}

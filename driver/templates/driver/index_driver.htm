@@ -2,17 +2,18 @@
 <div class="container">
     <br>
     <h4>hello,{{user.username}}</h4>
+
     <!--card-->
     <div class="row">
         <div class="col-4">
             <div id="link_card" class="card">
                 <div class="row">
                     <div class="col-3">
-                        <a id="card-a" href="{% url 'fine_add' %}"><i id="link_logo" class="fa fa-first-order"></i></a>
+                        <a id="card-a" href=""><i id="link_logo" class="fa fa-first-order"></i></a>
                     </div>
                     <div class="col-9">
                         <br>
-                        <a id="card-a" href="{% url 'fine_add' %}">
+                        <a id="card-a" href="">
                             <h5 id="link_h">Make Payment</h5>
                         </a>
                     </div>
@@ -21,16 +22,25 @@
         </div>
         <div class="col-4">
             <div id="link_card" class="card">
+
                 <div class="row">
                     <div class="col-3">
-                        <a id="card-a" href="{% url 'fine_list' %}"><i id="link_logo" class="fa fa-first-order"></i></a>
+                        <a id="card-a" href="{% url 'fine_list' user.id  %}"><i id="link_logo" class="fa fa-first-order"></i></a>
                     </div>
                     <div class="col-9">
-                        <br>
-                        <a id="card-a" href="{% url 'fine_list' %}"></a>
-                        <h5 id="link_h">View offence</h5>
+                        <br> {% for st in fines %}
+                        <a id="card-a" href="{% url 'fine_list' user.id  %}">
+                            {% endfor %}
+                            <h5 id="link_h">View offence</h5>
+                        </a>
+                        <!--br> {% for st in fines %}
+                        <a id="card-a" href="{% url 'fine_list' user.id  %}">
+                            {% endfor %}
+                            <h5 id="link_h">View offence</h5>
+                        </a-->
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="col-4">
@@ -47,7 +57,5 @@
             </div>
         </div>
     </div>
-    <br>
-
 </div>
 {% endblock %}

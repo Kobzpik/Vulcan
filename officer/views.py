@@ -13,12 +13,13 @@ def fine_create_view(request):
     if request.method == 'POST':
         form = FineCreationForm(request.POST)
         if form.is_valid():
+            form.save()
             return redirect('fine_add')
         else:
             messages.error(request,"Invalid Data Enter")
         
-    stud = Fine.objects.all()    
-    return render(request, 'officer/officer_index.htm', {'form': form,'stu': stud})
+    #stud = Fine.objects.all()    
+    return render(request, 'officer/officer_index.htm', {'form': form})
 
 
 
@@ -30,10 +31,9 @@ def fine_update_view(request, pk):
         if form.is_valid():
             form.save()
             return redirect('fine_change', pk=pk)
-        else:
-            messages.error(request,"Invalid username or password")
-            
-      
+    else:
+            messages.error(request,"Invalid Data Enter!")
+              
     return render(request, 'officer/officer_index.htm', {'form': form})
 
 
