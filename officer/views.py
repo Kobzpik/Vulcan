@@ -7,8 +7,7 @@ from .models import Fine, Location
 
 
 
-def fine_create_view(request):
-   
+def fine_create_view(request):  
     form = FineCreationForm()
     if request.method == 'POST':
         form = FineCreationForm(request.POST)
@@ -17,8 +16,7 @@ def fine_create_view(request):
             return redirect('fine_add')
         else:
             messages.error(request,"Invalid Data Enter")
-        
-    #stud = Fine.objects.all()    
+         
     return render(request, 'officer/officer_index.htm', {'form': form})
 
 
@@ -31,8 +29,6 @@ def fine_update_view(request, pk):
         if form.is_valid():
             form.save()
             return redirect('fine_change', pk=pk)
-    else:
-            messages.error(request,"Invalid Data Enter!")
               
     return render(request, 'officer/officer_index.htm', {'form': form})
 
@@ -50,3 +46,7 @@ def load_locations(request):
 def finelist(request):
     stud = Fine.objects.all()
     return render(request,'officer/officer_index.htm',{'stu': stud})
+
+def offenceDetails(request):
+     fines = Fine.objects.all()
+     return render(request, 'officer/offence_details.htm',{'fines': fines})

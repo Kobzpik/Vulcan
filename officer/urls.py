@@ -5,8 +5,10 @@ from .import views
 urlpatterns = [
     path('fine_add/', views.fine_create_view, name='fine_add'),
     # path('fine_add/', views.finelist, name='fine_add'),
-    path('<int:pk>/', views.fine_update_view, name='fine_change'),
-    path('ajax/load-locations/', views.load_locations, name='ajax_load_locations'), # AJAX
+    path('fine_change/<int:pk>/', views.fine_update_view, name='fine_change'),
+    path('ajax/load_locations/', views.load_locations, name='ajax_load_locations'), # AJAX
+    path('offence_details/', views.offenceDetails, name='offence_details'),
+                                                          
     
     
 ]

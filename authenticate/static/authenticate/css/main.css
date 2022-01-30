@@ -222,3 +222,12 @@
         text-decoration: none;
         color: #242222;
     }
+    
+    #body-link-row {
+        color: rgb(248, 246, 246);
+        background-color: #4a5852;
+    }
+    
+    .logout {
+        text-align: right;
+    }

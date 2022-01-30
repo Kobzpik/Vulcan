@@ -94,6 +94,6 @@ def login_requestPolice(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/')
+    return redirect('/authenticate/home')
 
 

@@ -1,9 +1,9 @@
 {% extends 'authenticate/base.htm' %}{% load widget_tweaks %} {% load static %} {% block content %}
-<link rel="stylesheet" href="{% static 'officer/css/style.css' %}"> {% load widget_tweaks %} {% load static %}
-
+<link rel="stylesheet" href="{% static 'officer/css/style.css' %}"> {% load widget_tweaks %}
 <br>
-<br>
-
+<div class="container-fluid logout">
+    <a id="body-link-row" class="btn" href="{% url 'profile_officer' %}" type="submit">Back</a><br><br>
+</div>
 <section>
     <div class="container">
         <div class="row">
@@ -32,7 +32,7 @@
 
 
 
-<!--script src="https://code.jquery.com/jquery-3.3.1.min.js"></script-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     $("#id_district").change(function() {
         const url = $("#personForm").attr("data-locations-url"); // get the url of the `load_locations` view
@@ -44,7 +44,7 @@
                 'district_id': districtId // add the district id to the GET parameters
             },
             success: function(data) { // `data` is the return of the `load_district` view function
-                $("#id_location").html(data); // replace the contents of the city input with the data that came from the server
+                $("#id_location").htm(data); // replace the contents of the city input with the data that came from the server
 
             }
         });
