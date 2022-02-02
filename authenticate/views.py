@@ -7,6 +7,7 @@ from django.views.generic import CreateView
 from .form import OfficerSignUpForm, DriverSignUpForm
 from django.contrib.auth.forms import AuthenticationForm
 from .models import User
+from officer.models import Fine
 from django.contrib.auth.decorators import login_required
 
 def home(request):
@@ -16,7 +17,8 @@ def profile_officer(request):
     return render(request, 'authenticate/profile.htm')
 
 def profile_driver(request):
-    return render(request, 'driver/index_driver.htm')
+    fines = Fine.objects.all()
+    return render(request, 'driver/index_driver.htm',{'fines':fines})
 
 class driver_register(CreateView):
     model = User
@@ -26,7 +28,7 @@ class driver_register(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('/')
+        return redirect('login_driver')
 
 class officer_register(CreateView):
     model = User
@@ -36,7 +38,7 @@ class officer_register(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('/')
+        return redirect('login_police')
 
 
 #def login_request(request):
@@ -92,6 +94,6 @@ def login_requestPolice(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/')
+    return redirect('/authenticate/home')
 
 

@@ -7,10 +7,10 @@ class FineCreationForm(forms.ModelForm):
     class Meta:
         model = Fine
         fields = '__all__'
-
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['location'].queryset = Location.objects.none()
+        self.fields['location'].queryset = Location.objects.all()
 
         if 'district' in self.data:
             try:
@@ -20,3 +20,4 @@ class FineCreationForm(forms.ModelForm):
                 pass  # invalid input ; ignore and fallback to empty queryset
         elif self.instance.pk:
             self.fields['location'].queryset = self.instance.district.location_set.order_by('name')
+     

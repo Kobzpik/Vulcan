@@ -1,6 +1,9 @@
 {% extends 'authenticate/base_sub.htm' %}{% load widget_tweaks %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'css/main.css' %}">
 <br>
+<div class="container-fluid logout">
+    <a id="body-link-row" class="btn" href="{% url 'profile_officer' %}" type="submit">Back</a><br><br>
+</div>
 <br>
 <br>
 <section>
@@ -18,6 +21,7 @@
                                 {{ field.label_tag }} {% render_field field class="form-control" %} {% for error in field.errors %}
                                 <br>
                                 <span style="color:red">{{ error }}</span> {% endfor %} {% endfor %}
+                                <br>
                                 <input type="submit" value="Register" class="btn btn-block btn-primary">
                             </div>
                         </form>

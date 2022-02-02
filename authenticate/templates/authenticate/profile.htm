@@ -13,7 +13,7 @@
                     <div class="col-9">
                         <br>
                         <a id="card-a" href="{% url 'fine_add' %}">
-                            <h5 id="link_h">Make NEW FINE</h5>
+                            <h5 id="link_h">Make New Fine</h5>
                         </a>
                     </div>
                 </div>
@@ -36,16 +36,66 @@
             <div id="link_card" class="card">
                 <div class="row">
                     <div class="col-3">
-                        <i id="link_logo" class="fa fa-first-order"></i>
+                        <a id="card-a" href="{% url 'officer_register' %}"><i id="link_logo" class="fa fa-first-order"></i></a>
                     </div>
                     <div class="col-9">
                         <br>
-                        <h5 id="link_h">Administrator view</h5>
+                        <a id="card-a" href="{% url 'officer_register' %}">
+                            <h5 id="link_h">Registration of a new officer</h5>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <br>
+
+    <div class="row">
+        <div class="col-4">
+            <div id="link_card" class="card">
+                <div class="row">
+                    <div class="col-3">
+                        <a id="card-a" href="{% url 'fine_add' %}"><i id="link_logo" class="fa fa-first-order"></i></a>
+                    </div>
+                    <div class="col-9">
+                        <br>
+                        <a id="card-a" href="{% url 'fine_add' %}">
+                            <h5 id="link_h">Obtain Report</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div id="link_card" class="card">
+                <div class="row">
+                    <div class="col-3">
+                        <a id="card-a" href="{% url 'offence_details' %}"><i id="link_logo" class="fa fa-first-order"></i></a>
+                    </div>
+                    <div class="col-9">
+                        <br>
+                        <h5 id="link_h">Offence details</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div id="link_card" class="card">
+                <div class="row">
+                    <div class="col-3">
+                        <a id="card-a" href="{% url 'officer_register' %}"><i id="link_logo" class="fa fa-first-order"></i></a>
+                    </div>
+                    <div class="col-9">
+                        <br>
+                        <a id="card-a" href="{% url 'officer_register' %}">
+                            <h5 id="link_h">Change account</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid logout">
+    <a id="body-link-row" class="btn" href="{% url 'logout' %}" type="submit">Logout</a><br><br>
 </div>
 {% endblock %}

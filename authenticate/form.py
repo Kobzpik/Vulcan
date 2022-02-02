@@ -7,7 +7,7 @@ class DriverSignUpForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     phone_number = forms.CharField(required=True)
-    location = forms.CharField(required=True)
+    driver_license_No = forms.CharField(required=True)
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -21,7 +21,7 @@ class DriverSignUpForm(UserCreationForm):
         user.save()
         driver = Driver.objects.create(user=user)
         driver.phone_number=self.cleaned_data.get('phone_number')
-        driver.location=self.cleaned_data.get('location')
+        driver.driver_license_No=self.cleaned_data.get('driver_license_No')
         driver.save()
         return user
 
