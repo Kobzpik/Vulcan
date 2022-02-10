@@ -39,6 +39,9 @@ def load_locations(request):
     locations = Location.objects.filter(district_id=district_id).all()
     return render(request, 'officer/lcoation_list_options.htm', {'locations': locations})
     #return JsonResponse(list(cities.values('id', 'name')), safe=False)
+    
+def dashboard(request):
+     return render(request, 'officer/dashboard.htm')
 
   
   
