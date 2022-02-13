@@ -1,6 +1,14 @@
 {% extends 'authenticate/base.htm' %} {% load static %} {% load crispy_forms_tags %} {% block content %}
-<link rel="stylesheet" href="{% static 'officer/css/style.css' %}"><br>
+<link rel="stylesheet" href="{% static 'officer/css/style.css' %}">
+<script src="{% static 'officer/js/script.js' %}"></script>
 
+<!--highhart link-->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<br>
 <div class="container-fluid">
     <!--dashboard header-->
     <div class="row">
@@ -14,6 +22,7 @@
     </div>
 
     <br>
+    <!--section 1-->
     <!--total-->
     <div class="container">
         <div class="row">
@@ -23,7 +32,7 @@
                         <h5 class="card-title">Total fine this year</h5>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">15</h3>
+                        <h3 class="card-title">1500</h3>
                     </div>
                 </div>
             </div>
@@ -40,15 +49,175 @@
         </div>
     </div>
     <br>
+    <!--section 2-->
+    <div class="row">
+        <div class="col-6">
+            <div class="card text-center text-black  mb-3" id="total-orders">
+                <div class="card-body">
+                    <figure class="highcharts-figure">
+                        <div id="container"></div>
+                    </figure>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card text-center text-black  mb-3" id="total-orders">
+                <div class="card-body">
+                    <figure class="highcharts-figure">
+                        <div id="container1"></div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--section 3-->
     <!--Map-->
     <div class="row">
         <!--iframe width="1024" height="612" src="https://app.powerbi.com/reportEmbed?reportId=2f4e9465-8626-4e8f-bd54-ee73d93692ea&autoAuth=true&ctid=49211f0f-e082-499f-94fb-96dff1601a14&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWVhc3QtYXNpYS1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true"></iframe><br/><br/-->
-        <iframe title="test_vulcan - Page 1" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=2f4e9465-8626-4e8f-bd54-ee73d93692ea&autoAuth=true&ctid=49211f0f-e082-499f-94fb-96dff1601a14&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWVhc3QtYXNpYS1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"
+        <iframe title="test_vulcan - Page 1" width="1140" height="800" src="https://app.powerbi.com/reportEmbed?reportId=2f4e9465-8626-4e8f-bd54-ee73d93692ea&autoAuth=true&ctid=49211f0f-e082-499f-94fb-96dff1601a14&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWVhc3QtYXNpYS1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"
             frameborder="0" allowFullScreen="true"></iframe>
     </div>
 
 </div>
+<script>
+    //barchart
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly total fine in 2022'
+        },
+        /*subtitle: {
+            text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+        },*/
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of fine'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: 'fine : <b>{point.y:.1f} </b>'
+        },
+        series: [{
+            name: 'Population',
+            data: [
+                ['January', 242],
+                ['February', 208],
+                ['March', 149],
+                ['April', 137],
+                ['May', 131],
+                ['June', 127],
+                ['July', 124],
+                ['August', 122],
+                ['September', 120],
+                ['October', 117],
+                ['November', 115],
+                ['December', 112],
+            ],
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                format: '{point.y}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        }]
+    });
 
+    //pie chart
+    // Radialize the colors
+    Highcharts.setOptions({
+        colors: Highcharts.map(Highcharts.getOptions().colors, function(color) {
+            return {
+                radialGradient: {
+                    cx: 0.5,
+                    cy: 0.3,
+                    r: 0.7
+                },
+                stops: [
+                    [0, color],
+                    [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
+                ]
+            };
+        })
+    });
+
+    // Build the chart
+    Highcharts.chart('container1', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Fien categery according to nature of fine , 2022'
+        },
+        /*tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },*/
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    connectorColor: 'silver'
+                }
+            }
+        },
+        series: [{
+            name: 'fine',
+            data: [{
+                name: 'offence1',
+                y: 614
+            }, {
+                name: 'offence2',
+                y: 1184
+            }, {
+                name: 'offence3',
+                y: 1085
+            }, {
+                name: 'offence4',
+                y: 467
+            }, {
+                name: 'offence6',
+                y: 418
+            }, {
+                name: 'offence7',
+                y: 705
+            }]
+        }]
+    });
+</script>
 
 
 {% endblock %}
