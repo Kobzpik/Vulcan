@@ -38,17 +38,19 @@
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
+                {% for fines in fined %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{fined.id}}</th>
-                        <td>{{fined.date}}</td>
-                        <td>{{fined.time}}</td>
-                        <td>{{fined.Police_station}}</td>
-                        <td>{{fined.Nature_of_Offence}}</td>
-                        <td>{{fined.district}}</td>
-                        <td>{{fined.location}}</td>
+                        <th scope="row">{{fines.id}}</th>
+                        <td>{{fines.date}}</td>
+                        <td>{{fines.time}}</td>
+                        <td>{{fines.Police_station}}</td>
+                        <td>{{fines.Nature_of_Offence}}</td>
+                        <td>{{fines.district}}</td>
+                        <td>{{fines.location}}</td>
                         <td>Pending</td>
                 </tbody>
+                {% endfor %}
             </table>
         </div>
     </div>

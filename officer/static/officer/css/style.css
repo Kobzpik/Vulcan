@@ -111,3 +111,7 @@
   .logout {
       text-align: right;
   }
+  
+  #dm_header {
+      text-align: center;
+  }

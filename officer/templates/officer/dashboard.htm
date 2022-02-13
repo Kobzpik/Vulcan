@@ -1,13 +1,52 @@
 {% extends 'authenticate/base.htm' %} {% load static %} {% load crispy_forms_tags %} {% block content %}
-<br>
+<link rel="stylesheet" href="{% static 'officer/css/style.css' %}"><br>
 
-<div class="my-3">
-    <h1>Dashboard</h1>
-</div><br/>
+<div class="container-fluid">
+    <!--dashboard header-->
+    <div class="row">
 
-<!--iframe width="1024" height="612" src="https://app.powerbi.com/reportEmbed?reportId=2f4e9465-8626-4e8f-bd54-ee73d93692ea&autoAuth=true&ctid=49211f0f-e082-499f-94fb-96dff1601a14&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWVhc3QtYXNpYS1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true"></iframe><br/><br/-->
-<iframe title="test_vulcan - Page 1" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=2f4e9465-8626-4e8f-bd54-ee73d93692ea&autoAuth=true&ctid=49211f0f-e082-499f-94fb-96dff1601a14&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWVhc3QtYXNpYS1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"
-    frameborder="0" allowFullScreen="true"></iframe>
+        <div class="card card-header ">
+            <h3 id="dm_header">Traffic Rule Violation Analysis Dashboard</h3>
+
+
+        </div>
+
+    </div>
+
+    <br>
+    <!--total-->
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card text-center text-black  mb-3" id="total-orders">
+                    <div class="card-header">
+                        <h5 class="card-title">Total fine this year</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">15</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card text-center text-black  mb-3" id="total-orders">
+                    <div class="card-header">
+                        <h5 class="card-title">Total fine Today</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">15</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!--Map-->
+    <div class="row">
+        <!--iframe width="1024" height="612" src="https://app.powerbi.com/reportEmbed?reportId=2f4e9465-8626-4e8f-bd54-ee73d93692ea&autoAuth=true&ctid=49211f0f-e082-499f-94fb-96dff1601a14&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWVhc3QtYXNpYS1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true"></iframe><br/><br/-->
+        <iframe title="test_vulcan - Page 1" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=2f4e9465-8626-4e8f-bd54-ee73d93692ea&autoAuth=true&ctid=49211f0f-e082-499f-94fb-96dff1601a14&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWVhc3QtYXNpYS1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"
+            frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+
 </div>
 
 

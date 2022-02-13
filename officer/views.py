@@ -4,11 +4,12 @@ from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
 from .forms import FineCreationForm
 from .models import Fine, Location
-
+import logging
 
 
 def fine_create_view(request):  
     form = FineCreationForm()
+
     if request.method == 'POST':
         form = FineCreationForm(request.POST)
         if form.is_valid():
@@ -16,7 +17,11 @@ def fine_create_view(request):
             return redirect('fine_add')
         else:
             messages.error(request,"Invalid Data Enter")
-         
+    logger = logging.getLogger()
+
+    logger.propogate = True
+
+    logger.error(form)
     return render(request, 'officer/officer_index.htm', {'form': form})
 
 
@@ -43,8 +48,7 @@ def load_locations(request):
 def dashboard(request):
      return render(request, 'officer/dashboard.htm')
 
-  
-  
+    
 #testing
 def finelist(request):
     stud = Fine.objects.all()
