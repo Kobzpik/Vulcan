@@ -7,6 +7,7 @@ from .models import Fine, Location
 import logging
 
 
+
 def fine_create_view(request):  
     form = FineCreationForm()
 
@@ -57,3 +58,8 @@ def finelist(request):
 def offenceDetails(request):
      fines = Fine.objects.all()
      return render(request, 'officer/offence_details.htm',{'fines': fines})
+
+def driver_info(request):
+
+        return render(request, 'officer/driver_infor.htm')
+        

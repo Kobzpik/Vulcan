@@ -11,3 +11,5 @@ def fine_list(request,pk):
         fined = Fine.objects.filter(driver_id = pk)     
         finedh = Driver.objects.get(user_id = pk)
         return render(request, 'driver/fines_list.htm',{'fined': fined,'finedh':finedh})
+
+

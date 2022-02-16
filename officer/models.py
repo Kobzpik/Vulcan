@@ -1,3 +1,4 @@
+from pickle import TRUE
 from sqlite3 import Date
 from xml.parsers.expat import model
 from django.db import models
@@ -35,7 +36,7 @@ class Offence(models.Model):
 
 class Fine(models.Model):
     id=models.AutoField(primary_key=True)
-    driver = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True,null=True)
+    driver = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True,null=True,limit_choices_to={'is_driver':True})
     vehicle_No = models.CharField(max_length=50)
     driver_license_No = models.CharField(max_length=124)
     district = models.ForeignKey(District, on_delete=models.SET_NULL, blank=True, null=True)

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     #own
     'widget_tweaks',
     'crispy_forms',
+    'django_filters',
     
     
 ]
