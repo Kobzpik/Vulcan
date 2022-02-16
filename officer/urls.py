@@ -9,6 +9,7 @@ urlpatterns = [
     path('ajax/load_locations/', views.load_locations, name='ajax_load_locations'), # AJAX
     path('offence_details/', views.offenceDetails, name='offence_details'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('driver_info/', views.driver_info, name='driver_info'),
                                                           
     
     

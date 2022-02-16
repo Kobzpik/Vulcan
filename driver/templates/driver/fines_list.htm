@@ -12,8 +12,7 @@
                 <img src="{% static 'driver/images/profile.png' %}" class="d-block w-75" alt="profile img">
             </div>
             <div class="col-8">
-                <h6>Driver license No: {{fined.driver_license_No}}</h6>
-                <h6>Vehicle No: {{fined.vehicle_No}}</h6>
+                <h6>Driver license No: {{finedh.driver_license_No}}</h6>
                 <h6>First Name: {{user.first_name}}</h6>
                 <h6>Last Name: {{user.last_name}}</h6>
             </div>
@@ -38,17 +37,19 @@
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
+                {% for fines in fined %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{fined.id}}</th>
-                        <td>{{fined.date}}</td>
-                        <td>{{fined.time}}</td>
-                        <td>{{fined.Police_station}}</td>
-                        <td>{{fined.Nature_of_Offence}}</td>
-                        <td>{{fined.district}}</td>
-                        <td>{{fined.location}}</td>
+                        <th scope="row">{{fines.id}}</th>
+                        <td>{{fines.date}}</td>
+                        <td>{{fines.time}}</td>
+                        <td>{{fines.Police_station}}</td>
+                        <td>{{fines.Nature_of_Offence}}</td>
+                        <td>{{fines.district}}</td>
+                        <td>{{fines.location}}</td>
                         <td>Pending</td>
                 </tbody>
+                {% endfor %}
             </table>
         </div>
     </div>

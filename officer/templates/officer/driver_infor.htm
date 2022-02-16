@@ -1,0 +1,57 @@
+{% extends 'authenticate/base.htm' %} {% load crispy_forms_tags %}{% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'driver/css/style.css' %}">
+<br>
+<div class="container-fluid">
+    <!--user filter-->
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+
+                <form method="get">
+                    {{myFilter.form}}
+
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+    <br>
+
+    <table class="table table-light table-striped table-bordered ">
+
+        <thead>
+            <tr>
+                <th scope="col">Fine id</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Police station</th>
+                <th scope="col">Nature of offence</th>
+                <th scope="col">District</th>
+                <th scope="col">Location</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        {% for fined in fines %}
+        <tbody>
+            <tr>
+                <th scope="row">{{fined.id}}</th>
+                <td>{{fined.date}}</td>
+                <td>{{fined.time}}</td>
+                <td>{{fined.Police_station}}</td>
+                <td>{{fined.Nature_of_Offence}}</td>
+                <td>{{fined.district}}</td>
+                <td>{{fined.location}}</td>
+                <td>Pending</td>
+        </tbody>
+        {% endfor %}
+    </table>
+
+    <br>
+    <!--logout buttorn-->
+    <div class="container-fluid logout">
+        <a id="body-link-row" class="btn" href="{% url 'logout' %}" type="submit">Logout</a><br><br>
+    </div>
+</div>
+{% endblock %}
