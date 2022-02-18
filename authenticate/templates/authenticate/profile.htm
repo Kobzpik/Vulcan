@@ -1,4 +1,4 @@
-{% extends 'authenticate/base.htm' %} {% load crispy_forms_tags %} {% block content %}
+{% extends 'authenticate/base_profile.htm' %} {% load crispy_forms_tags %} {% block content %}
 <div class="container">
     <br>
     <h4>hello,{{user.username}}</h4>
@@ -95,7 +95,5 @@
         </div>
     </div>
 </div>
-<div class="container-fluid logout">
-    <a id="body-link-row" class="btn" href="{% url 'logout' %}" type="submit">Logout</a><br><br>
-</div>
+
 {% endblock %}
