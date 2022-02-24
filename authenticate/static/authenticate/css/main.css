@@ -231,3 +231,8 @@
     .logout {
         text-align: right;
     }
+    
+    #logout-btn {
+        color: rgb(17, 17, 17);
+        background-color: #11b3e4;
+    }

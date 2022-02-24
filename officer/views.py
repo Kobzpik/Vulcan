@@ -5,6 +5,7 @@ from django.contrib import messages
 from .forms import FineCreationForm
 from .models import Fine, Location
 import logging
+from .filters import Fine_filter
 
 
 
@@ -50,16 +51,15 @@ def dashboard(request):
      return render(request, 'officer/dashboard.htm')
 
     
-#testing
-def finelist(request):
-    stud = Fine.objects.all()
-    return render(request,'officer/officer_index.htm',{'stu': stud})
 
 def offenceDetails(request):
      fines = Fine.objects.all()
      return render(request, 'officer/offence_details.htm',{'fines': fines})
 
+#driver_infor(multyple valdue parameter)
 def driver_info(request):
-
-        return render(request, 'officer/driver_infor.htm')
+    finesd = Fine.objects.all()
+    inforFilter = Fine_filter(request.GET, queryset=finesd)
+    finesd = inforFilter.qs
+    return render(request, 'officer/driver_infor.htm',{'inforFilter':inforFilter,'finesd':finesd})
         
