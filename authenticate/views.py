@@ -10,6 +10,7 @@ from .models import User , Codes , Officer
 from officer.models import Fine
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
+from .utils import send_sms
 
 def home(request):
     return render(request, 'authenticate/home.htm')
