@@ -1,24 +1,25 @@
-{% extends 'authenticate/base_sub.htm' %}{% load widget_tweaks %} {% load static %} {% block content %}
+{% extends 'authenticate/base.htm' %}{% load widget_tweaks %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'css/main.css' %}">
 <br>
-
-<br>
-<br>
+<!--alert-->
 <section>
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
                 <div class="card">
                     <div class="card-header text-black">
-                        <h2>Register</h2>
+                        <h3>Verify OTP</h3>
+                        <p>Enter SMS verification code</p>
                     </div>
                     <div class="card-body">
-                        <form action="{% url 'officer_register' %}" method="POST" novalidate>
+                        <form action="" method="POST" autocomplete="off">
                             {% csrf_token %} {% for field in form.visible_fields %}
                             <div class="form-group">
                                 {{ field.label_tag }} {% render_field field class="form-control" %} {% for error in field.errors %}
+                                <br>
                                 <span style="color:red">{{ error }}</span> {% endfor %} {% endfor %}
-                                <input type="submit" value="Register" class="btn btn-block btn-primary">
+                                <br>
+                                <input type="submit" value="Verify" class="btn btn-block btn-primary">
                             </div>
                         </form>
                     </div>

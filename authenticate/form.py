@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.db import transaction
-from .models import User,Driver,Officer
+from .models import User,Driver,Officer,Codes
 
 class DriverSignUpForm(UserCreationForm):
     first_name = forms.CharField(required=True)
@@ -47,3 +47,9 @@ class OfficerSignUpForm(UserCreationForm):
         officer.designation=self.cleaned_data.get('designation')
         officer.save()
         return user
+
+class CodeForm(forms.ModelForm):
+    number = forms.CharField(label='Codes', help_text='Enter varification code')
+    class Meta:
+        model = Codes
+        fields = ['number']
