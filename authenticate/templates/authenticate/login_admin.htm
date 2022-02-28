@@ -11,16 +11,13 @@
                         <h2>Login</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{% url 'login_police' %}" method="POST" novalidate>
+                        <form action="" method="POST" novalidate>
                             {% csrf_token %} {% for field in form.visible_fields %}
                             <div class="form-group">
                                 {{ field.label_tag }} {% render_field field class="form-control" %} {% if messages%} {% for message in messages %}
                                 <span style="color:red">{{ message }}</span> {% endfor %} {% endif %} {% endfor %}
                                 <br>
                                 <input type="submit" value="Login" class="btn btn-block btn-primary">
-                                <div class="form-group">
-                                    <small class="text-muted ml-3">If your are administrator, <a href="{% url 'login_admin' %}">Login here</a></small>
-                                </div>
                             </div>
                         </form>
                     </div>

@@ -125,6 +125,32 @@ def verify_view(request):
 
     return render(request, 'authenticate/verify.htm',{'form':form})
 
+
+#administrator login authentication       
+def login_requestAdmin(request):
+    if request.method=='POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            print(username)
+            user = authenticate(username=username, password=password)
+            print(username)
+            if user is not None and user.is_driver== True and user.is_officer:
+                #login(request,user)
+                return redirect('admin')
+            else:
+                messages.warning(request,"Invalid username or password!")
+        else:
+                messages.warning(request,"Invalid username or password")
+    return render(request, 'authenticate/login_admin.htm',
+    context={'form':AuthenticationForm()})
+
+@login_required
+def admin_view(request):
+    return render(request, 'officer/admin.htm')
+
+
 def logout_view(request):
     logout(request)
     return redirect('/authenticate/home')
