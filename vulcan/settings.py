@@ -69,6 +69,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'vulcan.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -143,4 +144,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static'),
 ]
+
+#stripe public  secret and webhook secret key for payment gateway
+STRIPE_PUBLIC_KEY='STRIPE_PUBLIC_KEY'
+STRIPE_PRIVATE_KEY='STRIPE_PRIVATE_KEY'
+STRIPE_ENDPOINT_SECRET = ''
 
