@@ -3,11 +3,11 @@ Highcharts.chart('container', {
         type: 'column'
     },
     title: {
-        text: 'World\'s largest cities per 2017'
+        text: 'Monthly total fine in 2022'
     },
-    subtitle: {
+    /*subtitle: {
         text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
-    },
+    },*/
     xAxis: {
         type: 'category',
         labels: {
@@ -21,50 +21,114 @@ Highcharts.chart('container', {
     yAxis: {
         min: 0,
         title: {
-            text: 'Population (millions)'
+            text: 'Number of fine'
         }
     },
     legend: {
         enabled: false
     },
     tooltip: {
-        pointFormat: 'Population in 2017: <b>{point.y:.1f} millions</b>'
+        pointFormat: 'fine : <b>{point.y:.1f} </b>'
     },
     series: [{
         name: 'Population',
         data: [
-            ['Shanghai', 24.2],
-            ['Beijing', 20.8],
-            ['Karachi', 14.9],
-            ['Shenzhen', 13.7],
-            ['Guangzhou', 13.1],
-            ['Istanbul', 12.7],
-            ['Mumbai', 12.4],
-            ['Moscow', 12.2],
-            ['São Paulo', 12.0],
-            ['Delhi', 11.7],
-            ['Kinshasa', 11.5],
-            ['Tianjin', 11.2],
-            ['Lahore', 11.1],
-            ['Jakarta', 10.6],
-            ['Dongguan', 10.6],
-            ['Lagos', 10.6],
-            ['Bengaluru', 10.3],
-            ['Seoul', 9.8],
-            ['Foshan', 9.3],
-            ['Tokyo', 9.3]
+            ['January', 242],
+            ['February', 208],
+            ['March', 149],
+            ['April', 137],
+            ['May', 131],
+            ['June', 127],
+            ['July', 124],
+            ['August', 122],
+            ['September', 120],
+            ['October', 117],
+            ['November', 115],
+            ['December', 112],
         ],
         dataLabels: {
             enabled: true,
             rotation: -90,
             color: '#FFFFFF',
             align: 'right',
-            format: '{point.y:.1f}', // one decimal
+            format: '{point.y}', // one decimal
             y: 10, // 10 pixels down from the top
             style: {
                 fontSize: '13px',
                 fontFamily: 'Verdana, sans-serif'
             }
         }
+    }]
+});
+
+//pie chart
+// Radialize the colors
+Highcharts.setOptions({
+    colors: Highcharts.map(Highcharts.getOptions().colors, function(color) {
+        return {
+            radialGradient: {
+                cx: 0.5,
+                cy: 0.3,
+                r: 0.7
+            },
+            stops: [
+                [0, color],
+                [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
+            ]
+        };
+    })
+});
+
+// Build the chart
+Highcharts.chart('container1', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Fien categery according to nature of fine , 2022'
+    },
+    /*tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },*/
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                connectorColor: 'silver'
+            }
+        }
+    },
+    series: [{
+        name: 'fine',
+        data: [{
+            name: 'offence1',
+            y: 614
+        }, {
+            name: 'offence2',
+            y: 1184
+        }, {
+            name: 'offence3',
+            y: 1085
+        }, {
+            name: 'offence4',
+            y: 467
+        }, {
+            name: 'offence6',
+            y: 418
+        }, {
+            name: 'offence7',
+            y: 705
+        }]
     }]
 });

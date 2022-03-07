@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="{% static 'driver/css/style.css' %}">
 <div class="container">
     <br>
-    <h4>hello,{{user.username}}</h4>
 
     <!--card-->
     <div class="row">
@@ -14,7 +13,7 @@
                     </div>
                     <div class="col-9">
                         <br>
-                        <a id="card-a" href="">
+                        <a id="card-a" href="{% url 'payment'  %}">
                             <h5 id="link_h">Make Payment</h5>
                         </a>
                     </div>

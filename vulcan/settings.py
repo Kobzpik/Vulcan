@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+
+#dotenv
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ja54zvll!kec+u$6hmmc(#4+!@40j^b%x@iy^h+adapj!dir)='
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -64,6 +68,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'vulcan.urls'
+
 
 TEMPLATES = [
     {
@@ -139,3 +144,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static'),
 ]
+
+#stripe public  secret and webhook secret key for payment gateway
+STRIPE_PUBLIC_KEY='STRIPE_PUBLIC_KEY'
+STRIPE_PRIVATE_KEY='STRIPE_PRIVATE_KEY'
+STRIPE_ENDPOINT_SECRET = ''
+

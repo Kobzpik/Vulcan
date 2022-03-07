@@ -12,5 +12,8 @@ urlpatterns = [
      path('login_driver/',views.login_requestDriver, name='login_driver'),
      path('login_police/',views.login_requestPolice, name='login_police'),
      path('logout/',views.logout_view, name='logout'),
-    
+     path('verify/',views.verify_view,name='verify'),
+     path('login_admin/',views.login_requestAdmin, name='login_admin'),
+    path('admin/',views.admin_view, name='admin'),
+
 ]

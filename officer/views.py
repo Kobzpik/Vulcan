@@ -16,14 +16,15 @@ def fine_create_view(request):
         form = FineCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,"successful make new fine")
             return redirect('fine_add')
+             
         else:
-            messages.error(request,"Invalid Data Enter")
-    logger = logging.getLogger()
-
-    logger.propogate = True
-
-    logger.error(form)
+            messages.warning(request,"Invalid Data Enter")
+    #console log
+    #logger = logging.getLogger()
+    #logger.propogate = True
+    #logger.error(form)
     return render(request, 'officer/officer_index.htm', {'form': form})
 
 
