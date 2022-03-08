@@ -23,8 +23,10 @@ def fine_list(request,pk):
 
 #payment gateway view 
 #home view
-def home(request):
-    return render(request,'driver/checkout.htm')
+def home(request,pk):
+    fined = Fine.objects.filter(driver_id = pk)     
+    finedh = Driver.objects.get(user_id = pk)
+    return render(request,'driver/checkout.htm',{'fined': fined,'finedh':finedh})
 
 #success view
 def success(request):
@@ -43,11 +45,11 @@ def create_checkout_session(request):
     payment_method_types=['card'],
     line_items=[{
       'price_data': {
-        'currency': 'inr',
+        'currency': 'lkr',
         'product_data': {
-          'name': 'Intro to Django Course',
+          'name': 'Payment for fine',
         },
-        'unit_amount': 10000,
+        'unit_amount': 100000,
       },
       'quantity': 1,
     }],
@@ -56,8 +58,8 @@ def create_checkout_session(request):
     },
     mode='payment',
     
-    success_url=YOUR_DOMAIN + '/driver/success.htm',
-    cancel_url=YOUR_DOMAIN + '/driver/cancel.htm',
+    success_url=YOUR_DOMAIN + '/driver/success/',
+    cancel_url=YOUR_DOMAIN + '/driver/cancel/',
     )
     print(session)
     #ID=order.id
