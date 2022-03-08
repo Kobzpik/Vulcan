@@ -23,8 +23,10 @@
                         <th scope="row">{{fines.id}}</th>
                         <td>{{fines.date}}</td>
                         <td>{{fines.Police_station}}</td>
+                        {% for finesm in finedm %} {% if fines.Nature_of_Offence_id == finesm.id %}
                         <td>{{fines.Nature_of_Offence}}</td>
-                        <td>1000</td>
+                        <td>{{ finesm.amount }}</td>
+                        {% endif %} {% endfor %}
                         <td>Pending</td>
                         <td><button type="button" class="btn btn-sm " id="checkout-button">Checkout</button></td>
                 </tbody>
@@ -32,37 +34,38 @@
             </table>
         </div>
     </div>
+</div>
+<br>
+<script type="text/javascript">
+    // Create an instance of the Stripe object with your publishable API key
+    var stripe = Stripe('pk_test_51KZz5nBmsmvppl44Pg71CIe35Vgz2v8T2VdN8GQdBGlRiJF7okLKaBiU6igsXC48S3V9ksf8FBpxbGVnjtNBfsou005OLqULXS');
+    var checkoutButton = document.getElementById('checkout-button');
 
-    <script type="text/javascript">
-        // Create an instance of the Stripe object with your publishable API key
-        var stripe = Stripe('pk_test_51KZz5nBmsmvppl44Pg71CIe35Vgz2v8T2VdN8GQdBGlRiJF7okLKaBiU6igsXC48S3V9ksf8FBpxbGVnjtNBfsou005OLqULXS');
-        var checkoutButton = document.getElementById('checkout-button');
-
-        checkoutButton.addEventListener('click', function() {
-            // Create a new Checkout Session using the server-side endpoint you
-            // created in step 3.
-            fetch('create-checkout-session/', {
-                    method: 'POST',
-                })
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(session) {
-                    return stripe.redirectToCheckout({
-                        sessionId: session.id
-                    });
-                })
-                .then(function(result) {
-                    // If `redirectToCheckout` fails due to a browser or network
-                    // error, you should display the localized error message to your
-                    // customer using `error.message`.
-                    if (result.error) {
-                        alert(result.error.message);
-                    }
-                })
-                .catch(function(error) {
-                    console.error('Error:', error);
+    checkoutButton.addEventListener('click', function() {
+        // Create a new Checkout Session using the server-side endpoint you
+        // created in step 3.
+        fetch('create-checkout-session/', {
+                method: 'POST',
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(session) {
+                return stripe.redirectToCheckout({
+                    sessionId: session.id
                 });
-        });
-    </script>
-    {% endblock %}
+            })
+            .then(function(result) {
+                // If `redirectToCheckout` fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using `error.message`.
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+            });
+    });
+</script>
+{% endblock %}

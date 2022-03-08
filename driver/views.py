@@ -2,7 +2,7 @@ from django.shortcuts import render,get_object_or_404
 from pandas import PeriodIndex
 from officer.models import Fine
 from authenticate.models import Driver,User
-from officer.models import Fine
+from officer.models import Fine,Offence
 import stripe
 from django.conf import settings
 from django.http import JsonResponse,HttpResponse
@@ -26,7 +26,9 @@ def fine_list(request,pk):
 def home(request,pk):
     fined = Fine.objects.filter(driver_id = pk)     
     finedh = Driver.objects.get(user_id = pk)
-    return render(request,'driver/checkout.htm',{'fined': fined,'finedh':finedh})
+    finedm = Offence.objects.all()
+    print(Offence.objects.get(id = pk))
+    return render(request,'driver/checkout.htm',{'fined': fined,'finedh':finedh,'finedm':finedm})
 
 #success view
 def success(request):
