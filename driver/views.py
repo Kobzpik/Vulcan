@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from pandas import PeriodIndex
 from officer.models import Fine
-from authenticate.models import Driver,User
+from authenticate.models import Driver, Officer,User
 from officer.models import Fine,Offence
 import stripe
 from django.conf import settings
@@ -40,8 +40,15 @@ def cancel(request):
 
 @csrf_exempt
 def create_checkout_session(request):
+    #amount_id = self.kwargs['pk']
+    amonutd = Offence.objects.get(id=5)
+    name=amonutd.offence
+    amount2=amonutd.amount
+    multyamount = amount2*100
+    
     #order=Order(email=" ",paid="False",amount=0,description=" ")
     #order.save()
+    #print(Offence.amount(id=2))
     session = stripe.checkout.Session.create(
     #client_reference_id=request.user.id if request.user.is_authenticated else None,
     payment_method_types=['card'],
@@ -49,9 +56,9 @@ def create_checkout_session(request):
       'price_data': {
         'currency': 'lkr',
         'product_data': {
-          'name': 'Payment for fine',
+          'name': name,
         },
-        'unit_amount': 100000,
+        'unit_amount': multyamount,
       },
       'quantity': 1,
     }],
