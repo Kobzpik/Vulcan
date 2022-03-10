@@ -24,6 +24,7 @@ class Location(models.Model):
 
 class Offence(models.Model):
     offence = models.CharField(max_length=40)
+    amount = models.DecimalField(max_digits=6, decimal_places=2)
 
     def __str__(self):
         return self.offence

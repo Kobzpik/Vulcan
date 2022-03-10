@@ -1,8 +1,8 @@
 from django.shortcuts import render,get_object_or_404
 from pandas import PeriodIndex
 from officer.models import Fine
-from authenticate.models import Driver,User
-from officer.models import Fine
+from authenticate.models import Driver, Officer,User
+from officer.models import Fine,Offence
 import stripe
 from django.conf import settings
 from django.http import JsonResponse,HttpResponse
@@ -23,8 +23,12 @@ def fine_list(request,pk):
 
 #payment gateway view 
 #home view
-def home(request):
-    return render(request,'driver/checkout.htm')
+def home(request,pk):
+    fined = Fine.objects.filter(driver_id = pk)     
+    finedh = Driver.objects.get(user_id = pk)
+    finedm = Offence.objects.all()
+    print(Offence.objects.get(id = pk))
+    return render(request,'driver/checkout.htm',{'fined': fined,'finedh':finedh,'finedm':finedm})
 
 #success view
 def success(request):
@@ -36,18 +40,25 @@ def cancel(request):
 
 @csrf_exempt
 def create_checkout_session(request):
+    #amount_id = self.kwargs['pk']
+    amonutd = Offence.objects.get(id=5)
+    name=amonutd.offence
+    amount2=amonutd.amount
+    multyamount = amount2*100
+    
     #order=Order(email=" ",paid="False",amount=0,description=" ")
     #order.save()
+    #print(Offence.amount(id=2))
     session = stripe.checkout.Session.create(
     #client_reference_id=request.user.id if request.user.is_authenticated else None,
     payment_method_types=['card'],
     line_items=[{
       'price_data': {
-        'currency': 'inr',
+        'currency': 'lkr',
         'product_data': {
-          'name': 'Intro to Django Course',
+          'name': name,
         },
-        'unit_amount': 10000,
+        'unit_amount': multyamount,
       },
       'quantity': 1,
     }],
@@ -56,8 +67,8 @@ def create_checkout_session(request):
     },
     mode='payment',
     
-    success_url=YOUR_DOMAIN + '/driver/success.htm',
-    cancel_url=YOUR_DOMAIN + '/driver/cancel.htm',
+    success_url=YOUR_DOMAIN + '/driver/success/',
+    cancel_url=YOUR_DOMAIN + '/driver/cancel/',
     )
     print(session)
     #ID=order.id
