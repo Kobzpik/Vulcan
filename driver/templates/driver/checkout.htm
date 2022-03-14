@@ -25,7 +25,7 @@
                         <td>{{fines.Police_station}}</td>
                         {% for finesm in finedm %} {% if fines.Nature_of_Offence_id == finesm.id %}
                         <td>{{fines.Nature_of_Offence}}</td>
-                        <td>{{ finesm.amount }}</td>
+                        <td>{{ finesm.amount }}.00</td>
                         {% endif %} {% endfor %}
                         <td>Pending</td>
                         <td><button type="button" class="btn btn-sm " id="checkout-button">Checkout</button></td>
