@@ -1,8 +1,10 @@
+from lib2to3.pgen2 import driver
 from django.shortcuts import render,get_object_or_404
 from pandas import PeriodIndex
 from officer.models import Fine
 from authenticate.models import Driver, Officer,User
 from officer.models import Fine,Offence
+from .models import Payment
 import stripe
 from django.conf import settings
 from django.http import JsonResponse,HttpResponse
@@ -40,15 +42,19 @@ def cancel(request):
 
 @csrf_exempt
 def create_checkout_session(request):
+    checkid=request.user.id
+    print(checkid)
     #amount_id = self.kwargs['pk']
-    amonutd = Offence.objects.get(id=5)
+    amonutd = Offence.objects.get(id=checkid)
     name=amonutd.offence
     amount2=amonutd.amount
     multyamount = amount2*100
+
     
-    #order=Order(email=" ",paid="False",amount=0,description=" ")
-    #order.save()
-    #print(Offence.amount(id=2))
+    
+    payment=Payment(driver=request.user,amount=amount2)
+    payment.save()
+    #rint(Offence.amount(id=2))
     session = stripe.checkout.Session.create(
     #client_reference_id=request.user.id if request.user.is_authenticated else None,
     payment_method_types=['card'],
@@ -63,7 +69,7 @@ def create_checkout_session(request):
       'quantity': 1,
     }],
     metadata={
-       # "order_id":order.id
+        "order_id":Payment.id
     },
     mode='payment',
     
