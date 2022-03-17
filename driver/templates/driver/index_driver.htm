@@ -47,11 +47,14 @@
             <div id="link_card" class="card">
                 <div class="row">
                     <div class="col-3">
-                        <i id="link_logo" class="fa fa-first-order"></i>
+                        <a id="card-a" href="{% url 'complain'  %}"><i id="link_logo" class="fa fa-first-order"></i></a>
                     </div>
                     <div class="col-9">
                         <br>
-                        <h5 id="link_h">Complain</h5>
+                        <a id="card-a" href="{% url 'complain'  %}">
+                            <h5 id="link_h">Complain</h5>
+                        </a>
+
                     </div>
                 </div>
             </div>

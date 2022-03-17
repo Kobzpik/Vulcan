@@ -1,16 +1,18 @@
 from lib2to3.pgen2 import driver
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from pandas import PeriodIndex
+from django.contrib import messages
 from officer.models import Fine
 from authenticate.models import Driver, Officer,User
 from officer.models import Fine,Offence
-from .models import Payment
+from .models import Complain, Payment
 import stripe
 from django.conf import settings
 from django.http import JsonResponse,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 stripe.api_key = settings.STRIPE_PRIVATE_KEY
 YOUR_DOMAIN = 'http://127.0.0.1:8000'
+from .forms import ComplainForm
 
 
 
@@ -29,7 +31,7 @@ def home(request,pk):
     fined = Fine.objects.filter(driver_id = pk)     
     finedh = Driver.objects.get(user_id = pk)
     finedm = Offence.objects.all()
-    print(Offence.objects.get(id = pk))
+    #print(Offence.objects.get(id = pk))
     return render(request,'driver/checkout.htm',{'fined': fined,'finedh':finedh,'finedm':finedm})
 
 #success view
@@ -43,14 +45,10 @@ def cancel(request):
 @csrf_exempt
 def create_checkout_session(request):
     checkid=request.user.id
-    print(checkid)
-    #amount_id = self.kwargs['pk']
     amonutd = Offence.objects.get(id=checkid)
     name=amonutd.offence
     amount2=amonutd.amount
     multyamount = amount2*100
-
-    
     
     payment=Payment(driver=request.user,amount=amount2)
     payment.save()
@@ -76,7 +74,7 @@ def create_checkout_session(request):
     success_url=YOUR_DOMAIN + '/driver/success/',
     cancel_url=YOUR_DOMAIN + '/driver/cancel/',
     )
-    print(session)
+    #print(session)
     #ID=order.id
     #order= Order.objects.filter(id=ID).update(email=customer_email,amount=price,paid=True,description=sessionID)
     #order.save()
@@ -113,3 +111,34 @@ def webhook(request):
        # Order.objects.filter(id=ID).update(email=customer_email,amount=price,paid=True,description=sessionID)
 
     return HttpResponse(status=200)
+
+#complain 
+def complain_view(request):  
+    form = ComplainForm()
+
+    if request.method == 'POST':
+        form = ComplainForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"successful make complain")
+            return redirect('complain')
+             
+        else:
+            messages.warning(request,"Invalid Data Enter")
+    #console log
+    #logger = logging.getLogger()
+    #logger.propogate = True
+    #logger.error(form)
+    return render(request, 'driver/complain.htm', {'form': form})
+
+
+#def complain_update_view(request, pk):
+    fine = get_object_or_404(Complain, pk=pk)
+    form = ComplainForm(instance=fine)
+    if request.method == 'POST':
+        form = ComplainForm(request.POST, instance=fine)
+        if form.is_valid():
+            form.save()
+            return redirect('fine_change', pk=pk)
+              
+    return render(request, 'driver/complain.htm', {'form': form})

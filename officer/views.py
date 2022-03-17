@@ -9,6 +9,7 @@ from .filters import Fine_filter
 
 
 
+
 def fine_create_view(request):  
     form = FineCreationForm()
 
