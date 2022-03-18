@@ -1,4 +1,4 @@
-{% extends 'authenticate/base_profile.htm' %} {% load crispy_forms_tags %}{% load static %} {% block content %}
+{% extends 'authenticate/base_sub1.htm' %} {% load crispy_forms_tags %}{% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'driver/css/style.css' %}">
 <div class="container-fluid">
     <script src="https://js.stripe.com/v3/"></script>
@@ -44,7 +44,7 @@
     checkoutButton.addEventListener('click', function() {
         // Create a new Checkout Session using the server-side endpoint you
         // created in step 3.
-        fetch('create-checkout-session/', {
+        fetch('create-checkout-session', {
                 method: 'POST',
             })
             .then(function(response) {

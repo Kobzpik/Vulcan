@@ -12,3 +12,11 @@ class Payment(models.Model):
     amount = models.DecimalField(max_digits=8, decimal_places=2)
     
 
+#complain form
+class Complain(models.Model):
+    id=models.AutoField(primary_key=True)
+    date = models.DateField(default=date.today)
+    complainer_name = models.CharField(max_length=30 ,blank=True,null=True)
+    email = models.CharField(max_length=30 ,blank=True,null=True)
+    complain = models.CharField(max_length=500 )
+

@@ -11,7 +11,7 @@
                         <h2 id="fine_h">DIGITAL FINE PAPER</h2>
                     </div>
                     <div class="card-body">
-                        <form method="post" id="personForm" data-locations-url="{% url 'ajax_load_locations' %}" novalidate>
+                        <form method="post" id="personForm" novalidate>
                             {% csrf_token %} {% for field in form.visible_fields %}
                             <div class="form-group">
                                 {{ field.label_tag }} {% render_field field class="form-control" %}{% for error in field.errors %}

@@ -1,0 +1,33 @@
+{% extends 'authenticate/base_sub1.htm' %} {% load crispy_forms_tags %}{% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'driver/css/style.css' %}"> {% load widget_tweaks %}
+<div class="container">
+    <br>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card">
+                        <div class="card-header text-black">
+                            <h2 id="fine_h">We are here to assist you!</h2>
+                            <p>Plese complete the form below for your complain</p>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" id="personForm" data-locations-url="{% url 'ajax_load_locations' %}" novalidate>
+                                {% csrf_token %} {% for field in form.visible_fields %}
+                                <div class="form-group">
+                                    {{ field.label_tag }} {% render_field field class="form-control" %}{% for error in field.errors %}
+                                    <span style="color:red">{{ error }}</span> {% endfor %} {% endfor %}
+                                    <br>
+                                    <input id="fine_btn" type="submit" value="MAKE FINE" class="btn btn-block btn-primary">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+</section>
+</div>
+<br> {% endblock %}
