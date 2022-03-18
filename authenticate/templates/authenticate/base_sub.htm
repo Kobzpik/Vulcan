@@ -109,6 +109,35 @@
         </div>
     </footer>
 
+    <!--Session expire-->
+    <div>
+        <div id="timer"></div>
+    </div>
+
+    <script>
+        var timer = document.getElementById("timer");
+        var duration = 150;
+
+        setInterval(updateTimer, 150);
+
+        function updateTimer() {
+            duration--;
+            timer = duration;
+            if (duration < 1) {
+                alert("expired");
+                window.location = "{% url 'logout'  %}"
+            } else {
+                timer = duration;
+            }
+        }
+
+        window.addEventListener("mousemove", resetTimer);
+
+        function resetTimer() {
+            duration = 150;
+        }
+    </script>
+
 
 
     <!-- Optional JavaScript; choose one of the two! -->
