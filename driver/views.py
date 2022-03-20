@@ -44,13 +44,27 @@ def cancel(request):
 
 @csrf_exempt
 def create_checkout_session(request):
+
+    #payment model
     checkid=request.user.id
     amonutd = Offence.objects.get(id=checkid)
     name=amonutd.offence
-    amount2=amonutd.amount
-    multyamount = amount2*100
     
-    payment=Payment(driver=request.user,amount=amount2)
+    
+
+    #payment model
+    fine = Fine.objects.get(driver_id=checkid)
+
+    #stripe view
+    fineo=fine.Nature_of_Offence_id
+    offenced=Offence.objects.get(id=fineo)
+    finea=offenced.amount
+    multyamount = finea*100
+
+    print("+++++++++++++++++++++")
+    print(finea)
+    
+    payment=Payment(driver=request.user,fine=fine,amount=finea)
     payment.save()
     #rint(Offence.amount(id=2))
     session = stripe.checkout.Session.create(

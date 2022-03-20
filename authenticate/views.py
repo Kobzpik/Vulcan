@@ -146,7 +146,7 @@ def login_requestAdmin(request):
     return render(request, 'authenticate/login_admin.htm',
     context={'form':AuthenticationForm()})
 
-@login_required
+
 def admin_view(request):
     return render(request, 'officer/admin.htm')
 
