@@ -89,14 +89,14 @@ def create_checkout_session(request):
     mode='payment',
    
     
-    success_url= 'http://0251-2402-d000-a400-bf07-b446-f22a-cdf3-3ee3.ngrok.io/driver/success/',
+    success_url= 'http://52ff-123-231-85-255.ngrok.io/driver/success/',
     cancel_url=YOUR_DOMAIN + '/driver/cancel/',
     )
-    ID=payment.id
+    
 
     #testing
-    print("+++++++++++++++++++++")
-    print(ID)
+    #print("+++++++++++++++++++++")
+    
 
     #payment=Payment.objects.filter(id=ID).update(driver=request.user,fine=fine,amount=finea,paid=True)
     #print(session)
@@ -123,8 +123,7 @@ def webhook(request):
         
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
-        print("+++++++++++++++++++++")
-        print("error")
+        
         return HttpResponse(status=400)
 
     # Handle the checkout.session.completed event

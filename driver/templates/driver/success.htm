@@ -1,18 +1,14 @@
-<html>
-
-<head>
-    <title>Thanks for your order!</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-</head>
-
-<body>
-    <div class="container">
-        <p>
-            <h3>Payment Successful</h3>
-            <p>Thank you for your purchase!</p>
-            <p> If you have any questions, please let us know through emails.</p>
-        </p>
+{% extends 'authenticate/base_sub1.htm' %} {% load crispy_forms_tags %}{% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'driver/css/style.css' %}">
+<div class="container-fluid">
+    <div id="check" class="box">
+        <img id="succes-icon" src="{% static 'driver/images/check.png' %}">
+        <h3>Payment Successful</h3>
+        <p>Thank you for your payment!</p>
+        <p> If you have any questions, please let us know through emails.</p>
+        <a id="ok-btn" class="btn" href="{% url 'payment' user.id  %}" type="submit">OK</a>
+        <br>
+        <br>
     </div>
-</body>
-
-</html>
+</div>
+{% endblock %}
