@@ -12,6 +12,7 @@ class Payment(models.Model):
     date = models.DateField(default=date.today)
     time = models.TimeField(default=datetime.datetime.now()) 
     amount = models.DecimalField(max_digits=8, decimal_places=2)
+    paid = models.BooleanField(default="False")
     
 
 #complain form

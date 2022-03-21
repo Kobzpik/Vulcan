@@ -9,8 +9,8 @@ urlpatterns = [
     path('payment/create-checkout-session', views.create_checkout_session, name='checkout'),
     path('success/', views.success,name='success'),
     path('cancel/', views.cancel,name='cancel'),
-    #path('webhooks/stripe/',views.webhook,name="webhook")
-     path('complain/', views.complain_view,name='complain'),
+    path('webhooks/stripe/',views.webhook,name="webhook"),
+    path('complain/', views.complain_view,name='complain'),
     #path('complain_change/<int:pk>/', views.complain_update_view, name='complain_change'),
 
 
