@@ -30,11 +30,24 @@ def fine_list(request,pk):
 def home(request,pk):
     fined = Fine.objects.filter(driver_id = pk)     
     finedh = Driver.objects.get(user_id = pk)
+
+    
+  
+
+    
+    paymentd = Payment.objects.filter(driver_id = pk )
+
     finedm = Offence.objects.all()
-    #print(Offence.objects.get(id = pk))
-    return render(request,'driver/checkout.htm',{'fined': fined,'finedh':finedh,'finedm':finedm})
+
+    #test
+    
+
+
+    
+    return render(request,'driver/checkout.htm',{'fined': fined,'finedh':finedh,'finedm':finedm,'paymentd':paymentd})
 
 #success view
+
 def success(request):
     return render(request,'driver/success.htm')
     
@@ -49,12 +62,13 @@ def create_checkout_session(request):
     checkid=request.user.id
     amonutd = Offence.objects.get(id=checkid)
     name=amonutd.offence
+   
     
     
 
     #payment model
     fine = Fine.objects.get(driver_id=checkid)
-
+   
     #stripe view
     fineo=fine.Nature_of_Offence_id
     offenced=Offence.objects.get(id=fineo)
@@ -64,6 +78,7 @@ def create_checkout_session(request):
 
     #testing
     #print("+++++++++++++++++++++")
+
  
     #make payment model
     payment=Payment(driver= request.user,fine=fine,amount=0,paid="False")
@@ -89,8 +104,8 @@ def create_checkout_session(request):
     mode='payment',
    
     
-    success_url= 'http://52ff-123-231-85-255.ngrok.io/driver/success/',
-    cancel_url=YOUR_DOMAIN + '/driver/cancel/',
+    success_url= 'http://f127-123-231-85-255.ngrok.io/driver/success/',
+    cancel_url='http://f127-123-231-85-255.ngrok.io/driver/cancel/',
     )
     
 
@@ -127,16 +142,20 @@ def webhook(request):
         return HttpResponse(status=400)
 
     # Handle the checkout.session.completed event
+  
     if event['type'] == 'checkout.session.completed':
         print("Payment was successful.")
         
         #sessionID = session["id"]
         #ID=session["metadata"]["order_id"]
        # Order.objects.filter(id=ID).update(email=customer_email,amount=price,paid=True,description=sessionID)
+        
         session = event['data']['object']
         price = session["amount_total"] /100
         ID=session["metadata"]["order_id"]
         Payment.objects.filter(id=ID).update(amount=price,paid=True)
+       
+       
 
     return HttpResponse(status=200)
 

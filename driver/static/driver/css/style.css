@@ -26,3 +26,8 @@
     background-color: #12c230;
     width: 70px;
 }
+
+#status {
+    background-color: #11e434;
+    text-align: center;
+}

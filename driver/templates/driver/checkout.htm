@@ -1,5 +1,6 @@
 {% extends 'authenticate/base_sub1.htm' %} {% load crispy_forms_tags %}{% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'driver/css/style.css' %}">
+
 <div class="container-fluid">
     <script src="https://js.stripe.com/v3/"></script>
 
@@ -13,8 +14,9 @@
                         <th scope="col">Police station</th>
                         <th scope="col">Nature of offence</th>
                         <th scope="col">Amount(Rs)</th>
-                        <th scope="col">Status</th>
                         <th scope="col">Pay</th>
+                        <th scope="col">Status</th>
+
                     </tr>
                 </thead>
                 {% for fines in fined %}
@@ -26,9 +28,13 @@
                         {% for finesm in finedm %} {% if fines.Nature_of_Offence_id == finesm.id %}
                         <td>{{fines.Nature_of_Offence}}</td>
                         <td>{{ finesm.amount }}.00</td>
-                        {% endif %} {% endfor %}
-                        <td>Pending</td>
                         <td><button type="button" class="btn btn-sm " id="checkout-button">Checkout</button></td>
+                        {% endif %} {% endfor %} {% for payments in paymentd %} {% if fines.id == payments.fine_id %} {%if payments.paid == 1 %}
+                        <td><span class="card" id="status"> Paid </span></td>
+
+                        {% endif %} {% endif %} {% endfor %}
+
+
                 </tbody>
                 {% endfor %}
             </table>
@@ -36,6 +42,7 @@
     </div>
 </div>
 <br>
+
 <script type="text/javascript">
     // Create an instance of the Stripe object with your publishable API key
     var stripe = Stripe('pk_test_51KZz5nBmsmvppl44Pg71CIe35Vgz2v8T2VdN8GQdBGlRiJF7okLKaBiU6igsXC48S3V9ksf8FBpxbGVnjtNBfsou005OLqULXS');
@@ -68,4 +75,5 @@
             });
     });
 </script>
+
 {% endblock %}
