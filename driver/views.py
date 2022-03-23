@@ -30,11 +30,24 @@ def fine_list(request,pk):
 def home(request,pk):
     fined = Fine.objects.filter(driver_id = pk)     
     finedh = Driver.objects.get(user_id = pk)
+
+    
+  
+
+    
+    paymentd = Payment.objects.filter(driver_id = pk )
+
     finedm = Offence.objects.all()
-    #print(Offence.objects.get(id = pk))
-    return render(request,'driver/checkout.htm',{'fined': fined,'finedh':finedh,'finedm':finedm})
+
+    #test
+    
+
+
+    
+    return render(request,'driver/checkout.htm',{'fined': fined,'finedh':finedh,'finedm':finedm,'paymentd':paymentd})
 
 #success view
+
 def success(request):
     return render(request,'driver/success.htm')
     
@@ -44,15 +57,33 @@ def cancel(request):
 
 @csrf_exempt
 def create_checkout_session(request):
+
+    #payment model
     checkid=request.user.id
     amonutd = Offence.objects.get(id=checkid)
     name=amonutd.offence
-    amount2=amonutd.amount
-    multyamount = amount2*100
+   
     
-    payment=Payment(driver=request.user,amount=amount2)
+    
+
+    #payment model
+    fine = Fine.objects.get(driver_id=checkid)
+   
+    #stripe view
+    fineo=fine.Nature_of_Offence_id
+    offenced=Offence.objects.get(id=fineo)
+    finea=offenced.amount
+    name=offenced.offence
+    multyamount = finea*100
+
+    #testing
+    #print("+++++++++++++++++++++")
+
+ 
+    #make payment model
+    payment=Payment(driver= request.user,fine=fine,amount=0,paid="False")
     payment.save()
-    #rint(Offence.amount(id=2))
+    #print(Offence.amount(id=2))
     session = stripe.checkout.Session.create(
     #client_reference_id=request.user.id if request.user.is_authenticated else None,
     payment_method_types=['card'],
@@ -67,13 +98,22 @@ def create_checkout_session(request):
       'quantity': 1,
     }],
     metadata={
-        "order_id":Payment.id
+        "order_id":payment.id
+        
     },
     mode='payment',
+   
     
-    success_url=YOUR_DOMAIN + '/driver/success/',
-    cancel_url=YOUR_DOMAIN + '/driver/cancel/',
+    success_url= 'http://f127-123-231-85-255.ngrok.io/driver/success/',
+    cancel_url='http://f127-123-231-85-255.ngrok.io/driver/cancel/',
     )
+    
+
+    #testing
+    #print("+++++++++++++++++++++")
+    
+
+    #payment=Payment.objects.filter(id=ID).update(driver=request.user,fine=fine,amount=finea,paid=True)
     #print(session)
     #ID=order.id
     #order= Order.objects.filter(id=ID).update(email=customer_email,amount=price,paid=True,description=sessionID)
@@ -95,20 +135,27 @@ def webhook(request):
     except ValueError as e:
         # Invalid payload
         return HttpResponse(status=400)
+        
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
+        
         return HttpResponse(status=400)
 
     # Handle the checkout.session.completed event
+  
     if event['type'] == 'checkout.session.completed':
         print("Payment was successful.")
-        #session = event['data']['object']
-         #creating order
-       # customer_email = session["customer_details"]["email"]
-       # price = session["amount_total"] /100
-       # sessionID = session["id"]
-       # ID=session["metadata"]["order_id"]
+        
+        #sessionID = session["id"]
+        #ID=session["metadata"]["order_id"]
        # Order.objects.filter(id=ID).update(email=customer_email,amount=price,paid=True,description=sessionID)
+        
+        session = event['data']['object']
+        price = session["amount_total"] /100
+        ID=session["metadata"]["order_id"]
+        Payment.objects.filter(id=ID).update(amount=price,paid=True)
+       
+       
 
     return HttpResponse(status=200)
 

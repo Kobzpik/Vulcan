@@ -11,3 +11,23 @@
     color: rgb(17, 17, 17);
     background-color: #11b3e4;
 }
+
+#check {
+    text-align: center;
+}
+
+#succes-icon {
+    width: 300px;
+    height: 400px;
+}
+
+#ok-btn {
+    color: rgb(245, 238, 238);
+    background-color: #12c230;
+    width: 70px;
+}
+
+#status {
+    background-color: #11e434;
+    text-align: center;
+}
