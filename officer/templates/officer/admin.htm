@@ -1,48 +1,65 @@
 {% extends 'authenticate/base.htm' %} {% load crispy_forms_tags %}{% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'driver/css/style.css' %}">
 <br>
+
+
+
 <!--card-->
 <div class="row">
     <div class="col-4">
         <div id="link_card" class="card">
             <div class="row">
-                <div class="col-3">
-                    <a id="card-a" href="{% url 'offence_details' %}"><i id="link_logo" class="fa fa-first-order"></i></a>
-                </div>
-                <div class="col-9">
-                    <br>
-                    <h5 id="link_h">Offence details</h5>
-                </div>
+                <center>
+                    <div class="col-3">
+                        <a id="card-a" href="{% url 'offence_details' %}"><i id="link_logo" class="fa fa-info-circle"></i></a>
+                    </div>
+                    <div class="col-9">
+                        <br>
+                        <a id="card-a" href="{% url 'officer_register' %}">
+                            <h5 id="link_h">Offence details</h5>
+                        </a>
+                    </div>
+                </center>
             </div>
         </div>
     </div>
     <div class="col-4">
         <div id="link_card" class="card">
             <div class="row">
-                <div class="col-3">
-                    <a id="card-a" href="{% url 'dashboard' %}"><i id="link_logo" class="fa fa-first-order"></i></a>
-                </div>
-                <div class="col-9">
-                    <br>
-                    <h5 id="link_h">Dashboard</h5>
-                </div>
+                <center>
+                    <div class="col-3">
+                        <a id="card-a" href="{% url 'dashboard' %}"><i id="link_logo" class="fa fa-tachometer"></i></a>
+                    </div>
+                    <div class="col-9">
+                        <br>
+                        <a id="card-a" href="{% url 'officer_register' %}">
+                            <h5 id="link_h">Dashboard</h5>
+                        </a>
+                    </div>
+                </center>
             </div>
         </div>
     </div>
     <div class="col-4">
         <div id="link_card" class="card">
             <div class="row">
-                <div class="col-3">
-                    <a id="card-a" href="{% url 'officer_register' %}"><i id="link_logo" class="fa fa-first-order"></i></a>
-                </div>
-                <div class="col-9">
-                    <br>
-                    <a id="card-a" href="{% url 'officer_register' %}">
-                        <h5 id="link_h">Registration of a new officer</h5>
-                    </a>
-                </div>
+                <center>
+                    <div class="col-3">
+                        <a id="card-a" href="{% url 'officer_register' %}"><i id="link_logo" class="fa fa-registered"></i></a>
+                    </div>
+                    <div class="col-9">
+                        <br>
+                        <a id="card-a" href="{% url 'officer_register' %}">
+                            <h5 id="link_h">Registration new officer</h5>
+                        </a>
+                    </div>
+                </center>
             </div>
         </div>
     </div>
+
+
 </div>
-{% endblock %}
+<br>
+<br>
+<br> {% endblock %}

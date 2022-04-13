@@ -1,0 +1,8 @@
+******requirement.txt********
+dotenv
+django-filter
+widget_tweaks
+mysqlclient
+twilio
+pandas
+stripe
