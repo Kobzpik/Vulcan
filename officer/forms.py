@@ -1,6 +1,6 @@
 from django import forms
 
-from officer.models import Fine, Location
+from officer.models import Fine, Location,Accident
 
 
 class FineCreationForm(forms.ModelForm):
@@ -21,3 +21,9 @@ class FineCreationForm(forms.ModelForm):
         elif self.instance.pk:
             self.fields['location'].queryset = self.instance.district.location_set.order_by('name')
      
+
+
+class AccidentForm(forms.ModelForm):
+    class Meta:
+        model = Accident
+        fields = '__all__'
