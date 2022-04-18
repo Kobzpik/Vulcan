@@ -259,3 +259,22 @@
         color: rgb(17, 17, 17);
         background-color: #11b3e4;
     }
+    /*profile*/
+    
+    #card-a {
+        transition: 1s;
+    }
+    
+    #card-a:hover {
+        font-size: 45px;
+        border-radius: 6px;
+        text-shadow: 0 0 20px #11b3e4, 0 0 20px #11b3e4, 0 0 80px #11b3e4;
+        transition-delay: 0.1s;
+        text-decoration: none;
+        border-radius: 9px;
+        transform: scale(1.1);
+    }
+    
+    #link_card:hover {
+        transform: scale(1.05);
+    }
