@@ -16,8 +16,31 @@
     
     #main_header {
         text-align: center;
-        font-size: 30px;
-        padding-left: 120px;
+        font-weight: bold;
+        padding-top: 20px;
+        text-shadow: 2px 2px #242424;
+    }
+    
+    @media only screen and (max-width:1920px) and (min-width:1700px) {
+        #main_header {
+            font-size: 40px;
+        }
+    }
+    
+    @media only screen and (max-width:1700px) and (min-width:1500px) {
+        #main_header {
+            font-size: 35px;
+        }
+    }
+    
+    @media only screen and (max-width:1500px) and (min-width:1000px) {
+        #main_header {
+            font-size: 30px;
+        }
+    }
+    
+    #header_image {
+        opacity: .9;
     }
     
     #header-paragraph {
@@ -117,7 +140,7 @@
         font-size: 15px;
         border-radius: 6px;
         background-color: #6f8070;
-        box-shadow: 0 0 10px #3914dd, 0 0 4px #1a01ff, 0 0 80px #1b04eb;
+        box-shadow: 0 0 10px #11b3e4, 0 0 4px #11b3e4, 0 0 80px #11b3e4;
         transition-delay: 0.1s;
         text-decoration: none;
         border-radius: 9px;

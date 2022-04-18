@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
-from .forms import FineCreationForm
+from .forms import FineCreationForm,AccidentForm
 from .models import Fine, Location
 import logging
 from .filters import Fine_filter
@@ -64,4 +64,23 @@ def driver_info(request):
     inforFilter = Fine_filter(request.GET, queryset=finesd)
     finesd = inforFilter.qs
     return render(request, 'officer/driver_infor.htm',{'inforFilter':inforFilter,'finesd':finesd})
+
+#Report accident
+def accident(request):
+    form = AccidentForm()
+
+    if request.method == 'POST':
+        form = AccidentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"successful Reposrt accident")
+            return redirect('complain')
+             
+        else:
+            messages.warning(request,"Invalid Data Enter")
+    #console log
+    #logger = logging.getLogger()
+    #logger.propogate = True
+    #logger.error(form)
+    return render(request, 'officer/accident.htm', {'form': form})
         

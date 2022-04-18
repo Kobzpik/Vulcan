@@ -50,3 +50,13 @@ class Fine(models.Model):
 
     def __str__(self):
         return self.id
+
+#report accident
+class Accident(models.Model):
+    id=models.AutoField(primary_key=True)
+    district = models.ForeignKey(District, on_delete=models.SET_NULL, blank=True, null=True)
+    location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=True, null=True)
+    date = models.DateField(default=date.today)
+    time = models.TimeField(default=datetime.datetime.now()) 
+    Reporter_name = models.CharField(max_length=20)
+   
