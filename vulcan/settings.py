@@ -147,6 +147,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static'),
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR,'static/')
+
+
 #stripe public  secret and webhook secret key for payment gateway
 STRIPE_PUBLIC_KEY=''
 STRIPE_PRIVATE_KEY=''
