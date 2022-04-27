@@ -73,8 +73,8 @@ def accident(request):
         form = AccidentForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request,"successful Reposrt accident")
-            return redirect('complain')
+            messages.success(request,"successful Report accident")
+            return redirect('accident')
              
         else:
             messages.warning(request,"Invalid Data Enter")

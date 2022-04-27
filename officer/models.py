@@ -1,11 +1,14 @@
 from pickle import TRUE
 from sqlite3 import Date
+from unicodedata import name
 from xml.parsers.expat import model
 from django.db import models
+from sqlalchemy import null
 #from sqlalchemy import true
 from authenticate.models import Driver,User
 from datetime import date,time
 import datetime
+import os
  
 # Create your models here.
 class District(models.Model):
@@ -52,11 +55,18 @@ class Fine(models.Model):
         return self.id
 
 #report accident
+def filepath(request,filename):
+    old_filename = filename
+    timeNow = datetime.datetime.now()
+    filename = "%s%s" , (old_filename,timeNow)
+    return os.path.join('uploads/',filename)
+
 class Accident(models.Model):
     id=models.AutoField(primary_key=True)
     district = models.ForeignKey(District, on_delete=models.SET_NULL, blank=True, null=True)
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=True, null=True)
     date = models.DateField(default=date.today)
-    time = models.TimeField(default=datetime.datetime.now()) 
+    time = models.TimeField(default=datetime.datetime.now())
+    images_of_accident = models.ImageField(upload_to ='static/', null=True , blank=True) 
     Reporter_name = models.CharField(max_length=20)
    

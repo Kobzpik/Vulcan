@@ -6,3 +6,4 @@ mysqlclient
 twilio
 pandas
 stripe
+crispy-forms

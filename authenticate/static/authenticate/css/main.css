@@ -98,6 +98,10 @@
             height: 100px;
         }
     }
+    
+    #choose {
+        color: #11b3e4;
+    }
     /*
 #header-links {
     position: relative;
