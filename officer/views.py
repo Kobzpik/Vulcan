@@ -70,7 +70,7 @@ def accident(request):
     form = AccidentForm()
 
     if request.method == 'POST':
-        form = AccidentForm(request.POST)
+        form = AccidentForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request,"successful Report accident")

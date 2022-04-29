@@ -11,20 +11,31 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from dotenv import load_dotenv
+from unittest.mock import DEFAULT
 
-#dotenv
-load_dotenv()
+from boto import storage_uri
+from dotenv import load_dotenv, find_dotenv
+from decouple import config
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+#dotenv
+# Add .env variables anywhere before SECRET_KEY
+
+
+load_dotenv(find_dotenv())
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = str(os.getenv('SECRET_KEY'))
+#SECRET_KEY = str(os.getenv('SECRET_KEY'))
+SECRET_KEY = config('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -53,6 +64,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'django_filters',
+    'storages'
     
     
 ]
@@ -143,16 +155,30 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/images/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static'),
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'static/')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 
 #stripe public  secret and webhook secret key for payment gateway
-STRIPE_PUBLIC_KEY=''
-STRIPE_PRIVATE_KEY=''
-STRIPE_ENDPOINT_SECRET = ''
+STRIPE_PUBLIC_KEY=config('STRIPE_PUBLIC_KEY')
+STRIPE_PRIVATE_KEY=config('STRIPE_PRIVATE_KEY')
+STRIPE_ENDPOINT_SECRET =config('STRIPE_ENDPOINT_SECRET')
+
+#AWS S3 bucket secret key and access key for cloud storage
+AWS_ACCESS_KEY_ID =config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME =  config('AWS_STORAGE_BUCKET_NAME')
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 
