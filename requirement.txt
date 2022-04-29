@@ -7,3 +7,5 @@ twilio
 pandas
 stripe
 crispy-forms
+boto3
+django-storages

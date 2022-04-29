@@ -67,6 +67,6 @@ class Accident(models.Model):
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, blank=True, null=True)
     date = models.DateField(default=date.today)
     time = models.TimeField(default=datetime.datetime.now())
-    images_of_accident = models.ImageField(upload_to ='static/', null=True , blank=True) 
+    images_of_accident = models.ImageField(default="image.png", null=True , blank=True) 
     Reporter_name = models.CharField(max_length=20)
    
