@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2022 at 05:14 AM
+-- Generation Time: May 01, 2022 at 06:50 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.14
 
@@ -24,45 +24,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `officer_offence`
+-- Table structure for table `authenticate_officer`
 --
 
-CREATE TABLE `officer_offence` (
-  `id` int(11) NOT NULL,
-  `offence` varchar(40) NOT NULL,
-  `amount` int(8) NOT NULL
+CREATE TABLE `authenticate_officer` (
+  `user_id` int(11) NOT NULL,
+  `phone_number` varchar(20) NOT NULL,
+  `designation` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `officer_offence`
+-- Dumping data for table `authenticate_officer`
 --
 
-INSERT INTO `officer_offence` (`id`, `offence`, `amount`) VALUES
-(1, 'offence1', 500),
-(2, 'offence2', 1000),
-(3, 'offence3', 2500),
-(4, 'offence4', 3000),
-(5, 'offence5', 5000);
+INSERT INTO `authenticate_officer` (`user_id`, `phone_number`, `designation`) VALUES
+(2, '0771957637', 'IP');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `officer_offence`
+-- Indexes for table `authenticate_officer`
 --
-ALTER TABLE `officer_offence`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `authenticate_officer`
+  ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Constraints for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `officer_offence`
+-- Constraints for table `authenticate_officer`
 --
-ALTER TABLE `officer_offence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `authenticate_officer`
+  ADD CONSTRAINT `authenticate_officer_user_id_86d77694_fk_authenticate_user_id` FOREIGN KEY (`user_id`) REFERENCES `authenticate_user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
