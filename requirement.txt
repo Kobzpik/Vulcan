@@ -9,3 +9,4 @@ stripe
 crispy-forms
 boto3
 django-storages
+python-decouple
