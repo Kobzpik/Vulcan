@@ -1,7 +1,6 @@
 ******requirement.txt********
 dotenv
-django-filter
-widget_tweaks
+django-filt
 mysqlclient
 twilio
 pandas
@@ -10,3 +9,10 @@ crispy-forms
 boto3
 django-storages
 python-decouple
+django-widget-tweaks 
+flask_sqlalchemy
+
+#install mysqlclient
+sudo apt-get install libmysqlclient-dev
+sudo apt-get install libssl-dev
+pip install mysqlclient
