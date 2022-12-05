@@ -40,8 +40,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['f127-123-231-85-255.ngrok.io']
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['.slpolicetvdm.me']
+ALLOWED_HOSTS = ['.slpolicetvdm.me','0.0.0.0']
 
 
 
@@ -155,7 +155,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = "/var/www/slpolicetvdm.me/static"
 MEDIA_URL = '/images/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static'),
@@ -163,6 +163,13 @@ STATICFILES_DIRS = [
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+#enable https
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SECURE_SSL_REDIRECT = True
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
+
 
 
 #stripe public  secret and webhook secret key for payment gateway
