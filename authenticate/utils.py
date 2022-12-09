@@ -13,8 +13,9 @@ def send_sms(user_code,phone_number):
     message = client.messages \
                 .create(
                      body=f"Hi! Your User and verification code is {user_code}",
-                     from_='+19034626264',
-                     to=f'{phone_number}'
+                    from_='+1 937 982 5009',
+                     #to=f'{phone_number}'
+                     to=f'+94{phone_number}'
                  )
 
     print(message.sid)

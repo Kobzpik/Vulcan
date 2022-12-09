@@ -25,46 +25,80 @@
 <body id="bg">
 
     <!--base nav bar-->
-    <nav class="navbar  navbar-bark " style="background-color: #11b3e4;" id="base-navbar">
-        <div class="container-fluid">
+    <!--base nav bar-->
+    <!-- <nav class="navbar  navbar-bark " style="background-color: #11b3e4;" id="base-navbar">
+        <div class="container-fluid ">
             <div class="row">
-                <div class="col-3 col-md-3 col-lg-3 col-sm-3">
-                    <!-- Logo Image -->
-                    <a><img id="header_image" href="{% url 'home' %}" src="{% static 'authenticate/images/Sri_Lanka_Police_logo.svgnew.png' %}" width="85" alt="" class="d-inline-block align-middle mr-2"></a>
+                <div class="col-3 col-md-3 col-lg-3 col-sm-3"> -->
+    <!-- Logo Image -->
+    <!-- <a><img id="header_image" href="{% url 'home' %}" src="{% static 'authenticate/images/Sri_Lanka_Police_logo.svgnew1.png' %}" width="85" alt="" class="d-inline-block align-middle mr-2"></a>
                 </div>
                 <div class="col-9 col-md-9 col-lg-9 col-sm-9">
-                    <center>
-                        <!-- Logo Text -->
-                        <h3 id="main_header" href="{% url 'home' %}">TRAFIC RULE VIOLATION DATA MANAGMNET SYSTEM</h3>
-                        <!--h5 class="navbar-brand" style="color: #11b3e4;" href="{% url 'home' %}">TRAFIC RULE VIOLATION DATA MANAGMNET SYSTEM</h5-->
-                    </center>
+                    <center> -->
+    <!-- Logo Text -->
+    <!-- <h3 id="main_header" href="{% url 'home' %}">TRAFIC RULE VIOLATION DATA MANAGMNET SYSTEM</h3> -->
+    <!--h5 class="navbar-brand" style="color: #11b3e4;" href="{% url 'home' %}">TRAFIC RULE VIOLATION DATA MANAGMNET SYSTEM</h5-->
+    <!-- </center>
 
                 </div>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <!--main nav bar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="main-navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">TVDM</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark test fixed-top" id="main-navbar">
+            <div class="container-fluid ">
+                <a><img id="header_image" href="{% url 'home' %}" src="{% static 'authenticate/images/Sri_Lanka_Police_logo.svgnew1.png' %}" width="85" alt="" class="d-inline-block align-middle mr-2"></a>
+                <!--a class="navbar-brand" href="{% url 'home' %}">TVDM</a-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link " aria-current="page" href="{% url 'home' %}">Home</a>
-                    <a class="nav-link" href="#">News</a>
-                    <a class="nav-link" href="#">Contact</a>
-                    <a class="nav-link" href="#">DOWNLOADS</a>
-                    <a class="nav-link" href="#">About</a>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link " id="nav_hed" aria-current="page" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link" id="nav_hed" href="#">News</a>
+                        <a class="nav-link" id="nav_hed" href="#">Contact</a>
+                        <a class="nav-link" id="nav_hed" href="#">DOWNLOADS</a>
+                        <a class="nav-link" id="nav_hed" href="#">About</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </nav>
+        <div class="container header-content w-md-50 w-100">
+
+            <h1 id="quotes"><b><span id="choose">Mind on the drive</span></b> </h1>
+            <h2 id="sub">Hands on the wheel. Eyes on the road </h2>
+            <br>
+            <h4 id="textsub">Proceed as...</h4>
+            <br>
+            <div class="col-sm-6 col-md-8" id="header-text">
+                <div class="row">
+                    <div class="col-1">
+                        <a href="{% url 'login_driver' %}"><i class="fa fa-user-circle-o" id="icone" aria-hidden="true" ></i></a>
+                        <!-- <a class="btn" href="{% url 'login_driver' %}" style="color: rgb(248, 246, 246); background-color: #4a5852;" type="submit" id="body-link-row">Driver</a><br><br> -->
+                    </div>
+                    <div class="col-2" id="textsub">
+                        <!-- <a class="btn" href="{% url 'login_driver' %}" style="color: rgb(248, 246, 246); background-color: #4a5852;" type="submit" id="body-link-row">Driver</a><br><br> -->
+
+                        <h4>Driver</h4>
+                    </div>
+                    <div class="col-1 pull-right">
+                        <a href="{% url 'login_police' %}"><i class="fa fa-user-secret" id="icone" aria-hidden="true"></i></a>
+                        <!-- <a class="btn" href="{% url 'login_driver' %}" style="color: rgb(248, 246, 246); background-color: #4a5852;" type="submit" id="body-link-row">Driver</a><br><br> -->
+                    </div>
+                    <div class="col-2" id="textsub">
+                        <!-- <a class="btn" href="{% url 'login_driver' %}" style="color: rgb(248, 246, 246); background-color: #4a5852;" type="submit" id="body-link-row">Driver</a><br><br> -->
+                        <h4>Police officer</h4>
+                    </div>
                 </div>
 
             </div>
         </div>
-    </nav>
-    <br>
-    <div class="container-fluid">
+    </header>
+    <div>
         <div>
             {% if messages %} {% for message in messages %}
             <div class="alert alert-{{message.tags}}">{{message}}</div>
@@ -112,8 +146,44 @@
 
         </div>
     </footer>
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script>
+        //fix nav bar
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+                if (scroll > 150) {
+                    $(".test").addClass("fixn");
+                } else {
+                    $(".test").removeClass("fixn");
+                }
+            })
+        });
+    </script>
 
+    <!-- <script>
+        var timer = document.getElementById("timer");
+        var duration = 300;
 
+        setInterval(updateTimer, 300);
+
+        function updateTimer() {
+            duration--;
+            timer = duration;
+            if (duration < 1) {
+                alert("Your session has expired.\n You will be redirected to the home page");
+                window.location = "{% url 'logout'  %}"
+            } else {
+                timer = duration;
+            }
+        }
+
+        window.addEventListener("mousemove", resetTimer);
+
+        function resetTimer() {
+            duration = 300;
+        }
+    </script> -->
 
     <!-- Optional JavaScript; choose one of the two! -->
 

@@ -3,16 +3,17 @@
 <div class="container">
     <br>
 
+    <h4>hello, {{user.username}}</h4>
+
     <!--card-->
     <div class="row">
         <div class="col-4">
             <div id="link_card" class="card">
                 <div class="row">
                     <center>
-                        <div class="col-3">
+                        <div class="col-4">
                             <a id="card-a" href="{% url 'payment' user.id %}"><i id="link_logo" class="fa fa-credit-card-alt"></i></a>
-                        </div>
-                        <div class="col-9">
+
                             <br>
                             <a id="card-a" href="{% url 'payment' user.id %}">
                                 <h5 id="link_h">Payment</h5>
@@ -26,10 +27,9 @@
             <div id="link_card" class="card">
                 <div class="row">
                     <center>
-                        <div class="col-3">
+                        <div class="col-4">
                             <a id="card-a" href="{% url 'fine_list' user.id  %}"><i id="link_logo" class="fa fa-user"></i></a>
-                        </div>
-                        <div class="col-9">
+
                             <br> {% for st in fines %}
                             <a id="card-a" href="{% url 'fine_list' user.id  %}">
                                 {% endfor %}
@@ -51,8 +51,7 @@
                     <center>
                         <div class="col-3">
                             <a id="card-a" href="{% url 'complain'  %}"><i id="link_logo" class="fa fa-question-circle-o"></i></a>
-                        </div>
-                        <div class="col-9">
+
                             <br>
                             <a id="card-a" href="{% url 'complain'  %}">
                                 <h5 id="link_h">Complain</h5>

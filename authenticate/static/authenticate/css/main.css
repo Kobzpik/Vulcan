@@ -4,6 +4,15 @@
         background-attachment: fixed;
     }
     
+    header {
+        width: 100%;
+        height: 70vh;
+        background-image: url(../images/bikes.jpg);
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    
     #base-navbar {
         min-height: 120px;
         font-size: 15px;
@@ -51,20 +60,93 @@
     
     .navbar-nav {
         font-size: 17px;
-        color: aliceblue;
+        color: rgb(6, 135, 247);
+    }
+    
+    #nav_hed {
+        color: white;
     }
     
     .navbar-nav .nav-link:hover {
         font-size: 18px;
-        background-color: #11b3e4;
+        background-color: #e6e6e6;
         transition: 0.8s;
+        color: #030303;
+    }
+    
+    #nav_hed:hover {
+        color: #030303;
+    }
+    /* fix nav bar */
+    
+    .fixn {
+        background: linear-gradient(to right, #2c4357 0%, #474241 100%);
+    }
+    
+    .fixn .navbar ul li a {
+        color: rgb(15, 14, 14);
+    }
+    
+    .fixn.nav.navbar .navbar-nav .nav-item .nav-link {
+        color: #29b4d7;
+    }
+    
+    .fixn #header_image {
+        width: 60px;
+        color: #030303;
+    }
+    
+    header .header-content {
+        position: absolute;
+        z-index: 999;
+        height: 400px;
+        left: 45%;
+        top: 80%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: left;
+        flex-direction: column;
+    }
+    
+    #quotes {
+        font-weight: bolder;
+        font-size: 50px;
+        color: #eaf5ea;
+    }
+    
+    #sub {
+        font-weight: bolder;
+        font-size: 40px;
+        color: #0c0c0c;
+    }
+    
+    #choose {
+        color: #0dafe1;
+    }
+    
+    #icone {
+        font-size: 60px;
+        color: #FFF;
+    }
+    
+    #icone:hover {
+        font-size: 65px;
+        transition: 0.5s;
+    }
+    
+    #textsub {
+        color: #FFF;
+    }
+    /* login navbar */
+    
+    #login_header {
+        height: 130px;
     }
     /* Slide-show*/
-    
-    .carousel-item {
+    /* .carousel-item {
         border: 2xp;
         height: 550px;
-        background-position: center;
+      
         position: relative;
         background-size: cover;
     }
@@ -80,7 +162,7 @@
         padding-left: 10px;
         padding-right: 10px;
         padding-top: 30px;
-        /*padding-bottom: 20px;*/
+
     }
     
     #slide_img {
@@ -100,10 +182,9 @@
     }
     
     #choose {
-        color: #11b3e4;
-    }
-    /*
-#header-links {
+        color: #0dafe1;
+    } */
+    /*#header-links {
     position: relative;
     border-radius: 20px;
     display: inline-block;
@@ -143,7 +224,7 @@
         color: #021f3b;
         font-size: 15px;
         border-radius: 6px;
-        background-color: #6f8070;
+        background-color: #13ec21;
         box-shadow: 0 0 10px #11b3e4, 0 0 4px #11b3e4, 0 0 80px #11b3e4;
         transition-delay: 0.1s;
         text-decoration: none;
@@ -169,20 +250,19 @@
     #news_card {
         padding: 15px;
         margin: 15px;
-        background-color: rgb(216, 224, 224);
+        background-color: rgb(254, 255, 253);
         box-shadow: 5px 5px 5px 2px #242222;
     }
     
     #link_card {
         padding: 5px;
         margin: 15px;
-        background-color: rgb(87, 119, 119);
+        background-color: #646b72;
     }
     /* import link */
     
     #link_logo {
-        font-size: 80px;
-        align-items: center;
+        font-size: 130px;
     }
     
     #link_h1 {
@@ -190,7 +270,7 @@
     }
     
     #link_h {
-        color: aliceblue;
+        color: rgb(207, 207, 207);
     }
     /* Footer */
     
@@ -246,6 +326,7 @@
     /*profile*/
     
     #card-a {
+        font-size: x-large;
         text-decoration: none;
         color: #242222;
     }
@@ -260,8 +341,8 @@
     }
     
     #logout-btn {
-        color: rgb(17, 17, 17);
-        background-color: #11b3e4;
+        color: rgb(235, 231, 231);
+        background-color: #0dafe1;
     }
     /*profile*/
     

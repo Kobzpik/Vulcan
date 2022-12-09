@@ -112,7 +112,7 @@ def verify_view(request):
         code_user = f"{user.user}:{user.number}"
         if not request.POST:
                 print(code_user)
-                #send_sms(code_user, userp.phone_number)
+                send_sms(code_user, userp.phone_number)
         if form.is_valid():
                 num = form.cleaned_data.get('number')
                 print("this is code "+num)
